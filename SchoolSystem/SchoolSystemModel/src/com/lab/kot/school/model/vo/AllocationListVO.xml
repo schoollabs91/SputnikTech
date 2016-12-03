@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AllocationListVO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.lab.kot.school.model.vo.AllocationListVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="SStudentVA"
+    ViewObjectName="com.lab.kot.school.model.vo.SStudentVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_SId"
+    ListVOName="SStudentVA"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SId"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="StudentSearchCriteria"/>
+  </ListBinding>
+  <SQLQuery><![CDATA[SELECT  
+'' S_ID 
+,SYSDATE START_DATE 
+,'' END_DATE 
+,'' REMARKS 
+FROM DUAL]]></SQLQuery>
+  <ViewAttribute
+    Name="SId"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="S_ID"
+    Expression="S_ID"
+    SQLType="VARCHAR"
+    LOVName="LOV_SId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StartDate"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    AliasName="START_DATE"
+    Expression="START_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="EndDate"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Date"
+    ColumnType="CHAR"
+    AliasName="END_DATE"
+    Expression="END_DATE"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="Remarks"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="REMARKS"
+    Expression="REMARKS"
+    SQLType="VARCHAR"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="SId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.lab.kot.school.model.SchoolSystemModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

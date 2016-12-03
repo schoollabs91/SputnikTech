@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="LoginPagePageDef"
+                Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="CreateWithParams_UserId" IsQueriable="false"/>
+      <variable Type="java.lang.String" Name="CreateWithParams1_UserEmail" IsQueriable="false"/>
+      <variable Type="java.lang.String" Name="CreateWithParams2_Password" IsQueriable="false"/>
+      <variable Type="java.lang.String" Name="CreateWithParams3_Role" IsQueriable="false"/>
+      <variable Type="java.lang.String" Name="CreateWithParams4_NickName" IsQueriable="false"/>
+    </variableIterator>
+    <iterator Binds="SUsersVO1" RangeSize="25" DataControl="SchoolSystemAMDataControl" id="SUsersVO1Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="Login" RequiresUpdateModel="true" Action="invokeMethod" MethodName="Login"
+                  IsViewObjectMethod="false" DataControl="SchoolSystemAMDataControl"
+                  InstanceName="data.SchoolSystemAMDataControl.dataProvider"
+                  ReturnName="data.SchoolSystemAMDataControl.methodResults.Login_SchoolSystemAMDataControl_dataProvider_Login_result">
+      <NamedData NDName="userId" NDValue="#{LogonBean.userId}" NDType="java.lang.String"/>
+      <NamedData NDName="password" NDValue="#{LogonBean.password}" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

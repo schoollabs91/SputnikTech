@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">NoticeBoard</property>
+      <property
+         name="page">/fragments/NoticeBoard.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>NoticeBoard&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">207.79883</property>
+      <property
+         name="x">337.01758</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">NoticeBoardAddEditPage</property>
+      <property
+         name="page">/fragments/NoticeBoardAddEditPage.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>NoticeBoardAddEditPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">206.09766</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">637.0449</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">addedit</property>
+      <property
+         name="sdm:polyPoints">R50,378.01758,207.44824,596.0449,205.74707,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View3"
+      to="View2">
+      <property
+         name="fromOutcome">back</property>
+      <property
+         name="sdm:polyPoints">L54,596.0449,209.24707,378.0449,210.94824,R54</property>
+   </ControlFlowCase>
+</SDM>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelHeader text="Configure Users" id="ph1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar">
+      
+        </f:facet>
+             <f:facet name="toolbar">
+                <af:toolbar id="t8">
+                    <af:button text="Save"
+                                id="b3" icon="/images/sCheck.png" actionListener="#{bindings.Commit.execute}"/>
+                    <af:button text="Cancel" id="b4"
+                               icon="/images/backsimple.png" actionListener="#{bindings.Rollback.execute}"
+                               immediate="true">
+            <af:resetActionListener/>
+          </af:button>
+              
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+      <af:spacer width="3" height="1" id="s1"/>
+        <af:panelGroupLayout id="pgl3" layout="horizontal" halign="center">
+         
+      <af:button actionListener="#{bindings.CreateInsert.execute}" text="Create"
+                     disabled="#{!bindings.CreateInsert.enabled}" id="b1"/>
+                      <af:spacer width="3" height="1" id="s12"/>
+          <af:button actionListener="#{bindings.Delete.execute}" text="Delete" disabled="#{!bindings.Delete.enabled}"
+                     id="b2"/>
+        
+        </af:panelGroupLayout>
+        <af:spacer width="3" height="1" id="s11"/>
+        <af:table value="#{bindings.SUsersVO1.collectionModel}" var="row" rows="#{bindings.SUsersVO1.rangeSize}"
+                  emptyText="#{bindings.SUsersVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  rowBandingInterval="1" selectedRowKeys="#{bindings.SUsersVO1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.SUsersVO1.collectionModel.makeCurrent}" rowSelection="single"
+                  fetchSize="#{bindings.SUsersVO1.rangeSize}" id="t1" partialTriggers="::b1 ::b2 ::b3 ::b4">
+          <af:column headerText="#{bindings.SUsersVO1.hints.UserId.label}" id="c1">
+            <af:inputText value="#{row.bindings.UserId.inputValue}" label="#{bindings.SUsersVO1.hints.UserId.label}"
+                          required="#{bindings.SUsersVO1.hints.UserId.mandatory}"
+                          columns="#{bindings.SUsersVO1.hints.UserId.displayWidth}"
+                          maximumLength="#{bindings.SUsersVO1.hints.UserId.precision}"
+                          shortDesc="#{bindings.SUsersVO1.hints.UserId.tooltip}" id="it1">
+              <f:validator binding="#{row.bindings.UserId.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column headerText="#{bindings.SUsersVO1.hints.UserEmail.label}" id="c2" width="200">
+            <af:inputText value="#{row.bindings.UserEmail.inputValue}"
+                          label="#{bindings.SUsersVO1.hints.UserEmail.label}"
+                          required="#{bindings.SUsersVO1.hints.UserEmail.mandatory}"
+                          columns="#{bindings.SUsersVO1.hints.UserEmail.displayWidth}"
+                          maximumLength="#{bindings.SUsersVO1.hints.UserEmail.precision}"
+                          shortDesc="#{bindings.SUsersVO1.hints.UserEmail.tooltip}" id="it2">
+              <f:validator binding="#{row.bindings.UserEmail.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column headerText="#{bindings.SUsersVO1.hints.Password.label}" id="c3">
+            <af:inputText value="#{row.bindings.Password.inputValue}" label="#{bindings.SUsersVO1.hints.Password.label}"
+                          required="#{bindings.SUsersVO1.hints.Password.mandatory}"
+                          columns="#{bindings.SUsersVO1.hints.Password.displayWidth}"
+                          maximumLength="#{bindings.SUsersVO1.hints.Password.precision}"
+                          shortDesc="#{bindings.SUsersVO1.hints.Password.tooltip}" id="it3">
+              <f:validator binding="#{row.bindings.Password.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column headerText="#{bindings.SUsersVO1.hints.Role.label}" id="c4">
+            <af:selectOneChoice value="#{row.bindings.Role.inputValue}" label="#{row.bindings.Role.label}"
+                                required="#{bindings.SUsersVO1.hints.Role.mandatory}"
+                                shortDesc="#{bindings.SUsersVO1.hints.Role.tooltip}" id="soc1">
+              <f:selectItems value="#{row.bindings.Role.items}" id="si1"/>
+              <f:validator binding="#{row.bindings.Role.validator}"/>
+            </af:selectOneChoice>
+          </af:column>
+          <af:column headerText="#{bindings.SUsersVO1.hints.NickName.label}" id="c5" width="200">
+            <af:inputText value="#{row.bindings.NickName.inputValue}" label="#{bindings.SUsersVO1.hints.NickName.label}"
+                          required="#{bindings.SUsersVO1.hints.NickName.mandatory}"
+                          columns="#{bindings.SUsersVO1.hints.NickName.displayWidth}"
+                          maximumLength="#{bindings.SUsersVO1.hints.NickName.precision}"
+                          shortDesc="#{bindings.SUsersVO1.hints.NickName.tooltip}" id="it4">
+              <f:validator binding="#{row.bindings.NickName.validator}"/>
+            </af:inputText>
+          </af:column>
+        </af:table>
+      </af:panelGroupLayout>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</ui:composition>

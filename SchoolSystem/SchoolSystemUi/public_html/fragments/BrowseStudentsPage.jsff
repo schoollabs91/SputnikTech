@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelHeader text="panelHeader 1" id="ph1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar"/>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+        <af:spacer width="10" height="10" id="s3"/>
+        <af:panelGroupLayout id="pgl3" layout="horizontal">
+          <af:button text="A" id="b2" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}">
+            
+          </af:button>
+          <af:button text="B" id="b3" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}">
+            
+          </af:button>
+          <af:button text="C" id="b4" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}">
+            
+          </af:button>
+          <af:button text="D" id="b5" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="E" id="b6" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="F" id="b7" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="G" id="b8" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="H" id="b9" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="I" id="b10" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="J" id="b11" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="K" id="b12" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="L" id="b13" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="M" id="b14" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="N" id="b15" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="O" id="b16" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="P" id="b17" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="Q" id="b18" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="R" id="b19" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="S" id="b20" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="T" id="b21" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="U" id="b22" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="V" id="b23" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="W" id="b24" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="X" id="b25" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="Y" id="b26" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+          <af:button text="Z" id="b27" actionListener="#{backingBeanScope.BrowseStudentBean.FilterActionListener}"/>
+        </af:panelGroupLayout>
+       
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:separator id="s2"/>
+        <af:table value="#{bindings.SStudentVO3.collectionModel}" var="row" rows="#{bindings.SStudentVO3.rangeSize}"
+                  emptyText="#{bindings.SStudentVO3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  rowBandingInterval="1" selectedRowKeys="#{bindings.SStudentVO3.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.SStudentVO3.collectionModel.makeCurrent}" rowSelection="single"
+                  fetchSize="#{bindings.SStudentVO3.rangeSize}" id="t1"
+                  binding="#{backingBeanScope.BrowseStudentBean.studentTable}" >
+          <af:column sortProperty="#{bindings.SStudentVO3.hints.SId.name}" sortable="true"
+                     headerText="#{bindings.SStudentVO3.hints.SId.label}" id="c1">
+            <af:inputText value="#{row.bindings.SId.inputValue}" label="#{bindings.SStudentVO3.hints.SId.label}"
+                          required="#{bindings.SStudentVO3.hints.SId.mandatory}"
+                          columns="#{bindings.SStudentVO3.hints.SId.displayWidth}"
+                          maximumLength="#{bindings.SStudentVO3.hints.SId.precision}"
+                          shortDesc="#{bindings.SStudentVO3.hints.SId.tooltip}" id="it1">
+              <f:validator binding="#{row.bindings.SId.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.SStudentVO3.hints.SFirstName.name}" sortable="true"
+                     headerText="#{bindings.SStudentVO3.hints.SFirstName.label}" id="c2">
+            <af:inputText value="#{row.bindings.SFirstName.inputValue}"
+                          label="#{bindings.SStudentVO3.hints.SFirstName.label}"
+                          required="#{bindings.SStudentVO3.hints.SFirstName.mandatory}"
+                          columns="#{bindings.SStudentVO3.hints.SFirstName.displayWidth}"
+                          maximumLength="#{bindings.SStudentVO3.hints.SFirstName.precision}"
+                          shortDesc="#{bindings.SStudentVO3.hints.SFirstName.tooltip}" id="it2">
+              <f:validator binding="#{row.bindings.SFirstName.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.SStudentVO3.hints.SLastName.name}" sortable="true"
+                     headerText="#{bindings.SStudentVO3.hints.SLastName.label}" id="c3">
+            <af:inputText value="#{row.bindings.SLastName.inputValue}"
+                          label="#{bindings.SStudentVO3.hints.SLastName.label}"
+                          required="#{bindings.SStudentVO3.hints.SLastName.mandatory}"
+                          columns="#{bindings.SStudentVO3.hints.SLastName.displayWidth}"
+                          maximumLength="#{bindings.SStudentVO3.hints.SLastName.precision}"
+                          shortDesc="#{bindings.SStudentVO3.hints.SLastName.tooltip}" id="it3">
+              <f:validator binding="#{row.bindings.SLastName.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.SStudentVO3.hints.SMiddleName.name}" sortable="true"
+                     headerText="#{bindings.SStudentVO3.hints.SMiddleName.label}" id="c4">
+            <af:inputText value="#{row.bindings.SMiddleName.inputValue}"
+                          label="#{bindings.SStudentVO3.hints.SMiddleName.label}"
+                          required="#{bindings.SStudentVO3.hints.SMiddleName.mandatory}"
+                          columns="#{bindings.SStudentVO3.hints.SMiddleName.displayWidth}"
+                          maximumLength="#{bindings.SStudentVO3.hints.SMiddleName.precision}"
+                          shortDesc="#{bindings.SStudentVO3.hints.SMiddleName.tooltip}" id="it4">
+              <f:validator binding="#{row.bindings.SMiddleName.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.SStudentVO3.hints.SGender.name}" sortable="true"
+                     headerText="#{bindings.SStudentVO3.hints.SGender.label}" id="c5">
+            <af:inputText value="#{row.bindings.SGender.inputValue}" label="#{bindings.SStudentVO3.hints.SGender.label}"
+                          required="#{bindings.SStudentVO3.hints.SGender.mandatory}"
+                          columns="#{bindings.SStudentVO3.hints.SGender.displayWidth}"
+                          maximumLength="#{bindings.SStudentVO3.hints.SGender.precision}"
+                          shortDesc="#{bindings.SStudentVO3.hints.SGender.tooltip}" id="it5">
+              <f:validator binding="#{row.bindings.SGender.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.SStudentVO3.hints.SNationality.name}" sortable="true"
+                     headerText="#{bindings.SStudentVO3.hints.SNationality.label}" id="c6">
+            <af:inputText value="#{row.bindings.SNationality.inputValue}"
+                          label="#{bindings.SStudentVO3.hints.SNationality.label}"
+                          required="#{bindings.SStudentVO3.hints.SNationality.mandatory}"
+                          columns="#{bindings.SStudentVO3.hints.SNationality.displayWidth}"
+                          maximumLength="#{bindings.SStudentVO3.hints.SNationality.precision}"
+                          shortDesc="#{bindings.SStudentVO3.hints.SNationality.tooltip}" id="it6">
+              <f:validator binding="#{row.bindings.SNationality.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.SStudentVO3.hints.SDateOfBitrh.name}" sortable="true"
+                     headerText="#{bindings.SStudentVO3.hints.SDateOfBitrh.label}" id="c7">
+            <af:inputDate value="#{row.bindings.SDateOfBitrh.inputValue}"
+                          label="#{bindings.SStudentVO3.hints.SDateOfBitrh.label}"
+                          required="#{bindings.SStudentVO3.hints.SDateOfBitrh.mandatory}"
+                          columns="#{bindings.SStudentVO3.hints.SDateOfBitrh.displayWidth}"
+                          shortDesc="#{bindings.SStudentVO3.hints.SDateOfBitrh.tooltip}" id="id1">
+              <f:validator binding="#{row.bindings.SDateOfBitrh.validator}"/>
+              <af:convertDateTime pattern="#{bindings.SStudentVO3.hints.SDateOfBitrh.format}"/>
+            </af:inputDate>
+          </af:column>
+          <af:column sortProperty="#{bindings.SStudentVO3.hints.RollNo.name}" sortable="true"
+                     headerText="#{bindings.SStudentVO3.hints.RollNo.label}" id="c8">
+            <af:inputText value="#{row.bindings.RollNo.inputValue}" label="#{bindings.SStudentVO3.hints.RollNo.label}"
+                          required="#{bindings.SStudentVO3.hints.RollNo.mandatory}"
+                          columns="#{bindings.SStudentVO3.hints.RollNo.displayWidth}"
+                          maximumLength="#{bindings.SStudentVO3.hints.RollNo.precision}"
+                          shortDesc="#{bindings.SStudentVO3.hints.RollNo.tooltip}" id="it7">
+              <f:validator binding="#{row.bindings.RollNo.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.SStudentVO3.hints.RollNo.format}"/>
+            </af:inputText>
+          </af:column>
+        </af:table>
+      </af:panelGroupLayout>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</ui:composition>

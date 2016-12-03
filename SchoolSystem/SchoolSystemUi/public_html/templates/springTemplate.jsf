@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component">
+    <af:panelGroupLayout id="pt_pgl1" layout="vertical">
+        <af:panelSpringboard id="pt_ps1" displayMode="grid">
+            <af:showDetailItem text="showDetailItem 1" id="pt_sdi1"/>
+            <af:showDetailItem text="showDetailItem 2" id="pt_sdi2"/>
+            <af:showDetailItem text="showDetailItem 3" id="pt_sdi3"/>
+        </af:panelSpringboard>
+    </af:panelGroupLayout>
+    <af:xmlContent>
+        <afc:component>
+            <afc:description/>
+            <afc:display-name>springTemplate</afc:display-name>
+            <afc:facet>
+                <afc:facet-name>Content</afc:facet-name>
+            </afc:facet>
+        </afc:component>
+    </af:xmlContent>
+</af:pageTemplateDef>

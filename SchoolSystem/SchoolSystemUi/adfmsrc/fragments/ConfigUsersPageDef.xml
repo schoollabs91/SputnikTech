@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="ConfigUsersPageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SUsersVO1" RangeSize="25" DataControl="SchoolSystemAMDataControl" id="SUsersVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SUsersVO1Iterator" id="SUsersVO1">
+      <nodeDefinition DefName="com.lab.kot.school.model.vo.SUsersVO" Name="SUsersVO10">
+        <AttrNames>
+          <Item Value="UserId"/>
+          <Item Value="UserEmail"/>
+          <Item Value="Password"/>
+          <Item Value="Role"/>
+          <Item Value="NickName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SUsersVO1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SUsersVO1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="SchoolSystemAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="SchoolSystemAMDataControl"/>
+  </bindings>
+</pageDefinition>

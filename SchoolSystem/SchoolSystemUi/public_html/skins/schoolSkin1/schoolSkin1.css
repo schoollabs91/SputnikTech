@@ -1,0 +1,721 @@
+@charset "UTF-8";
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+
+af|document{
+    
+    /*background-image: url("../../images/IMG_20160424_204748863.jpg")!important;
+    background-repeat:no-repeat !important;    
+    background-color: transparent; 
+    background-size: 1400px 700px;*/ 
+    }
+af|panelGroupLayout {
+    background-color: White;
+}
+
+
+
+af|panelHeader::title0 {
+    background-color: #788291; 
+    border-color: #788291; 
+    border-width: 0px;
+    border-style:hidden  ;
+}
+af|panelHeader::title1 {
+    background-color: #788291; 
+     border-color: #788291; 
+    border-width: 0px;
+    border-style:hidden  ;
+    height: 25px; 
+}
+
+af|panelHeader::title2 {
+    background-color: #788291; 
+    border-color: #788291; 
+    border-width: 0px;
+    border-style:hidden  ;
+    height: 20px; 
+}
+
+af|panelHeader::title3 {
+    background-color: #788291; 
+    border-color: #788291; 
+    border-width: 0px;
+    border-style:hidden  ;
+    height: 15px; 
+}
+af|panelHeader::title4 {
+    background-color: #788291; 
+     border-color: #788291; 
+    border-width: 0px;
+    border-style:hidden  ;
+    height: 10px; 
+}
+af|panelHeader {    
+    /*padding: 1px 1px 1px 1px;*/     
+    border-color: #C4BDAF; 
+     width: 980px;   
+}
+af|panelHeader.level1 {
+    border-color: #1D4A71; 
+    border-top-width: 3px;
+    border-left-width: 0px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;    
+    border-style:solid ;
+    padding: 1px 1px 1px 1px;     
+}
+
+af|panelHeader.level1Opaque {
+    border-color: #1D4A71; 
+    border-top-width: 3px;
+    border-left-width: 0px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    opacity: 0.1;
+    border-style:solid ;
+    padding: 1px 1px 1px 1px;     
+}
+
+af|panelHeader::title-text0 {
+    color: White; 
+    
+}
+af|panelHeader::title-text1 {
+    color: White; 
+}
+
+af|query::title0 {
+    background-color: GrayText; 
+    display: none; 
+    
+}
+
+af|toolbox::body {
+    background-color: #c3c3c3; 
+    
+}
+
+af|button::link {
+    border-collapse: separate; 
+}
+
+af|query::disclosure-link {
+    
+}
+
+af|query::undisclosed-icon-style {
+    width: 22px;
+    height: 22px;
+    background-image: url("../../images/arrows-r.png")!important;
+    outline: none;
+    display:none;
+}
+af|query::undisclosed-icon-style:active {
+    width: 22px;
+    height: 22px;
+    display:none;
+    outline: none;
+    background-image: url("../../images/arrows-r.png")!important;
+}
+af|query::undisclosed-icon-style:hover {
+    width: 22px;
+    height: 22px;
+    background-image: url("../../images/arrows-r.png")!important;
+    outline: none;
+}
+
+af|query::disclosed-icon-style {
+    width: 22px;
+    height: 22px;
+    background-image: url("../../images/arrows_d.png")!important;
+    outline: none;
+}
+
+af|query::disclosed-icon-style:active {
+    width: 22px;
+    height: 22px;
+    background-image: url("../../images/arrows_d.png")!important;
+    outline: none;
+}
+af|query::disclosed-icon-style:hover {
+    width: 22px;
+    height: 22px;
+    background-image: url("../../images/arrows_d.png")!important;
+    outline: none;
+}
+
+af|query::content0 {
+    border-top-style: solid; 
+    border-top-color: WindowText; 
+    border-top-width: thick; 
+}
+
+af|query::title1 {
+    background-color: transparent; 
+    border-bottom-style: solid; 
+    border-bottom-width: medium; 
+    border-bottom-color: #bdbdbd; 
+}
+
+af|panelSplitter::horizontal-icon-style {
+    width: 1px; 
+       display: none; 
+}
+
+af|panelSplitter::horizontal-restore-icon {
+    width: 1px; 
+    display: none; 
+}
+
+af|panelSplitter::horizontal-divider {
+    display: none; 
+    
+}
+
+af|panelSplitter::horizontal-icon-container {
+    display: none; 
+}
+
+af|panelSplitter::horizontal-icon-style {
+    display: none; 
+    width: 1px; 
+}
+
+af|panelSplitter::horizontal-collapse-icon {
+    display: none; 
+    width: 1px; 
+}
+
+af|panelSplitter::horizontal-highlighter {
+    display: none; 
+    background-color: InactiveCaption; 
+}
+
+af|panelSplitter::horizontal-divider:disclosed:positioned-from-end af|panelSplitter::horizontal-icon-style {
+    display: none; 
+}
+
+af|panelSplitter::horizontal-divider:positioned-from-end af|panelSplitter::horizontal-highlighter {
+    display: none; 
+}
+
+af|panelSplitter::horizontal-divider:disclosed af|panelSplitter::horizontal-icon-style {
+    display: none; 
+}
+
+af|panelBox::disclosed-icon-style {
+    /*display: none;*/ 
+}
+
+.Edit af|button {    
+   background-color: #788291 !important;
+   background-image:none;    
+}
+.Add af|table af|button {    
+   background-color: #788291 !important;
+   background-image:none;    
+}
+
+.Nav af|button {    
+   background-color: transparent !important;
+   background-image:none;    
+   border: 1px solid #788291; 
+}
+.AFButtonBackground:alias{
+  
+    
+}
+af|panelFormLayout::label-cell:-moz-placeholder{
+    
+    background-color: #788291; 
+}
+af|query af|button {    
+   background-color: #788291 !important;
+   background-image:none;
+    border: 1px solid #788291; 
+}
+
+af|toolbar af|button {    
+   background-color: #788291 !important;
+   background-image:none;
+    border: 1px solid #788291; 
+}
+
+af|button {    
+   background-color: #788291 !important;
+   background-image:none;
+    border: 1px solid #788291; 
+}
+af|button:disabled {    
+   background-color: transparent !important;
+   background-image:none;
+    border: 0px solid #788291; 
+}
+
+af|button:hover {    
+   background-color: transparent !important;
+   background-image:none;
+    border: 2px solid #788291; 
+}
+af|button:focus {    
+   background-color: transparent !important;
+   background-image:none;
+    border: 2px solid #788291; 
+}
+
+af|button::link {
+   
+}
+
+af|button::text {
+   color:White;
+    font-size: medium; 
+    font-weight: lighter; 
+}
+af|inputText::content {
+    
+    
+    }
+
+af|inputText::content:focus {
+    border:1px solid #1D4A71;     
+    }
+    
+af|inputDate::content {
+   
+    }
+
+af|inputDate::content:focus {
+    border:1px solid #1D4A71; 
+   
+    }
+
+af|link {
+    color: #1D4A71; 
+    font-size: small; 
+    font-weight: bolder; 
+}
+
+af|panelAccordion::header {
+        -tr-header-height: 10px;
+  -tr-draggable-header-height: 10px;    
+    background-color: #788291; 
+}
+
+.AFPanelAccordionHeaderBackground:alias {
+    
+}
+
+af|panelAccordion::header-subsequent {
+    
+}
+
+af|panelAccordion::header-disclose {
+    
+    background-color: #788291; 
+}
+
+af|panelAccordion::disclosed-icon-style {
+    /*background-image: url("../../images/_plus.png");*/ 
+}
+af|panelAccordion::disclosed-icon-style:focus {
+    /*background-image: url("../../images/_plus.png");*/ 
+}
+af|panelAccordion::undisclosed-icon-style {
+    /*background-image: url("../../images/_plus.png");*/ 
+}
+af|panelAccordion::undisclosed-icon-style:focus {
+    /*background-image: url("../../images/_plus.png");*/ 
+}
+af|selectOneChoice::label {  
+    font-size: small;
+    background-image:none;
+}
+
+af|selectOneChoice::dropdown-panel {
+    border:1px solid #1D4A71;
+    display:none;
+    
+}
+
+af|selectOneChoice::content:focus {
+    border:1px solid #1D4A71; 
+    
+    }
+
+af|selectOneChoice::content-border {
+    
+}
+af|query::criterion af|selectOneChoice::content{
+  /*required to fix the alignment issue*/
+  
+}
+
+af|panelHeader af|selectOneChoice::content{
+    
+}
+af|panelBox af|selectOneChoice::content{
+    
+}
+
+
+
+af|selectBooleanCheckbox::selected-icon {
+    /*content: url("../../images/checkbox-checked.png");*/ 
+   
+}
+
+af|table::data-row af|selectBooleanCheckbox::content {
+    background-color: transparent; 
+}
+
+af|table::data-row af|selectBooleanCheckbox::content-input {
+    background-color: #788291; 
+    border:2px solid #788291;
+}
+
+af|table::data-row af|selectBooleanCheckbox::content-input:focus {
+    background-color: #788291; 
+    border:4px solid #788291;
+}
+
+af|selectBooleanCheckbox::native-input {
+    /*background-color: #1D4A71;*/ 
+       background-color: #788291; 
+
+}
+
+af|column::column-header af|selectBooleanCheckbox::content-input {
+    background-color: #788291; 
+    border:2px solid #788291; 
+}
+af|column::column-header af|selectBooleanCheckbox::content-input {
+    background-color: #788291; 
+    border:4px solid #788291; 
+}
+
+af|inputText::label {
+    font-size: small; 
+}
+
+af|Table af|inputText::label {
+    font-size: small; 
+}
+af|Table af|outputText::label {
+    font-size: small; 
+}
+af|Query af|selectOneChoice::label{
+    font-size: small; 
+}
+
+af|Query af|selectOneChoice::content{
+    font-size: small; 
+}
+af|Query af|selectOneChoice::content:focus{
+    font-size: small; 
+}
+
+af|Query af|inputText::label{
+    font-size: 5px; 
+}
+
+af|Query af|inputText::content{
+    font-size: small; 
+}
+af|Query af|inputText::content:focus{
+    font-size: small; 
+}
+
+af|inputDate::label {
+    font-size: small; 
+}
+
+af|inputDate:disabled::label {
+    font-size: small; 
+}
+
+af|inputDate:required::label {
+    font-size: small; 
+}
+
+af|image {
+    height: 200px; 
+    width: 160px; 
+}
+
+
+af|panelBox::header-start:core:default {
+    background-image: none;
+    background-color: Fuchsia; 
+    background-color: #564B4D !important; 
+}
+
+af|panelBox:core:default {
+  
+  border-radius: 0px;
+  -tr-header-height: 55px;
+  -tr-header-background-color: #564B4D;
+  -tr-draggable-header-height: 55px;     
+  background-color: #564B4D;
+    }
+
+af|panelBox::header-end:core:hover {
+    background-image: none;    
+    background-color: #564B4D !important; 
+}
+
+af|panelSplitter af|panelBox::header-center:core:default {
+    background-image: none;
+    background-color: white !important; 
+  
+}
+
+af|panelBox::header-element {
+    font-size: 13px;
+    color: #565656;
+}
+
+af|panelBox::center:core:default {
+   background-color: #564B4D; 
+}
+
+
+af|panelBox::footer-start:core:default {
+    display: none;
+}
+
+af|panelBox::footer-center:core:default {
+    display: none;
+}
+
+af|panelBox::footer-end:core:default {
+    display: none;
+}
+.AFPanelBoxHeaderCenter:default{
+    background-color: #564B4D; 
+}
+af|panelBox::disclosed-icon-style {
+    width: 22px;
+    height: 22px;
+    background-image: url("../../images/arrows_d.png")!important;
+    outline: none;
+    /*cursor: pointer;*/
+}
+
+af|panelBox::disclosed-icon-style:hover {
+    width: 22px;
+    height: 22px;
+    background-image: url("../../images/arrows_d.png")!important;
+    outline: none;
+}
+
+af|panelBox::disclosed-icon-style:active {
+    width: 22px;
+    height: 22px;
+    background-image: url("../../images/arrows_d.png")!important;
+    outline: none;
+}
+
+af|panelBox::undisclosed-icon-style {
+    width: 22px;
+    height: 22px;
+    background-image: url("../../images/arrows_r.png")!important;
+    outline: none;
+    /*cursor: pointer;*/
+}
+af|panelBox::disclosed-icon-style:focus {
+    width: 22px;
+    height: 22px;
+    background-image: url("../../images/arrows_d.png")!important;
+    outline: none;
+}
+af|panelBox::disclosed-icon-style:hover-target {
+    width: 22px;
+    height: 22px;
+    background-image: url("../../images/arrows_d.png")!important;
+    outline: none;
+}
+
+af|panelBox::undisclosed-icon-style:hover {
+    width: 22px;
+    height: 22px;
+    outline: none;
+    background: url("../../images/arrows-r.png")!important;
+}
+af|panelBox::undisclosed-icon-style:active {
+    width: 22px;
+    height: 22px;
+    
+    outline: none;
+    background: url("../../images/arrows-r.png")!important;
+}
+
+af|panelBox::undisclosed-icon-style:focus {
+    width: 22px;
+    height: 22px;
+    outline: none;
+    background: url("../../images/arrows-r.png")!important;
+}
+
+af|panelBox::undisclosed-icon-style:hover-target {
+    width: 22px;
+    height: 22px;
+    outline: none;
+    background: url("../../images/arrows-r.png")!important;
+}
+
+af|dialog::header {
+    background-color: #564B4D; 
+}
+
+af|dialog::header-end {
+    background-color: #564B4D; 
+}
+
+af|dialog::header-start {
+    background-color: #564B4D; 
+}
+
+af|panelWindow::header {
+    background-color: Red; 
+}
+
+.AFPopupSelector {
+    background-color: #fdfdfe; 
+   box-shadow: none !important;
+    -webkit-box-shadow: none !important; 
+   -moz-box-shadow: none !important;
+}
+.AFPopupSelectorContentStart 
+{  
+  background-color: #564B4D; 
+}
+.AFPopupSelectorContentEnd
+ {   
+ background-color: #564B4D; 
+}
+.AFPopupSelectorHeaderEnd
+ {  
+  background-color: #564B4D; 
+}
+.AFPopupSelectorHeaderStart 
+{   
+ background-color: #564B4D; 
+}
+.AFPopupSelectorHeader
+ {  
+  background-color: #564B4D; 
+}
+
+af|panelCollection {
+    
+}
+
+af|panelWindow::close-icon-style {
+    /*background-image: url("../../images/close.png")!important;*/
+}
+
+af|panelWindow::header-start {
+    /*background-color: #564B4D !important;*/
+}
+
+af|panelWindow::header-end {
+    /*background-color: #564B4D !important;*/
+}
+
+af|panelWindow::header-center {
+    background-color: #564B4D !important;
+}
+
+.PanelBar af|menuBar {
+    background-color: #564B4D;
+}
+
+.PanelBar af|toolbar {
+    background-color: #788291;
+}
+
+
+
+af|panelWindow::main {
+    
+    
+}
+af|panelWindow {   
+     background-color: #564B4D !important;
+}
+
+af|panelBox::content {
+  border-top-style: solid; 
+  border-top-color: #C4BDAF; 
+  border-top-width: medium; 
+  padding: 10px 0px 10px 0px;  
+  background-color: White;
+  }
+
+af|panelLabelAndMessage::label {
+    font-size: small; 
+}
+
+af|query af|selectOneChoice::compact-dropdown-icon-style {
+    background-image: none; 
+    display:none;
+}
+
+af|panelAccordion::header-title {
+    background-color: #788291; 
+    color: White; 
+}
+
+af|panelAccordion::header-toolbar {
+    background-color: #788291; 
+}
+ .AFDefaultFontFamily:alias {
+           font-family: "Century Gothic", "Lucida Console", Helvetica, sans-serif;
+         }
+
+         /* Component-specific selector.  */
+         af|inputText::label
+         {
+           /*font:7.0px ;
+           border-top-style: solid; 
+  border-top-color: #C4BDAF; 
+  border-top-width: medium; 
+     border-bottom-style: solid; 
+  border-bottom-color: #C4BDAF; 
+  border-bottom-width: medium;*/ 
+  
+    
+         }
+   af|query af|inputText::content{
+             width:300px;
+         }
+         
+ af|panelFormLayout::label-cell{text-align:right;
+    
+}
+ .panelFormLayoutFocus  af|panelFormLayout::label-stacked-cell:focus
+ {
+ text-align:right;
+    
+}
+.panelFormLayoutFocus af|inputText::content:focus{
+             text-align:right;
+             text-underline-position: below; 
+         }
+         
+af|query::title-end0 {
+    display: none; 
+}
+
+af|query::title-start0 {
+    display: none; 
+}
+.AFPhoneFieldTextMarker{
+    
+}
+.AFPhoneFieldText{
+    
+}

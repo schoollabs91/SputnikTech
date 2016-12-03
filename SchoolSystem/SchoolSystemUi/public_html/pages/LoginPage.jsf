@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+     <af:document title="LoginPage.jsf" id="d1" initialFocusId="it1">
+        <af:messages id="m1"/>
+        <af:form id="f1" defaultCommand="b1">
+            <af:panelStretchLayout id="psl1" startWidth="auto" topHeight="200px"
+                                   endWidth="auto" dimensionsFrom="children">
+                <f:facet name="bottom">
+                    <af:spacer width="10" height="10" id="s1"/>
+                </f:facet>
+                <f:facet name="center">
+                    <af:panelHeader text="" id="ph1" size="5"
+                                    type="flow">
+                        <af:panelGroupLayout id="pgl1" halign="center" layout="horizontal">
+                            <af:panelFormLayout id="pfl1">
+                                <af:panelGroupLayout id="pgl2" layout="vertical" halign="start">
+                                <af:outputText value="कaksha" id="pt_ot2"
+                                               inlineStyle="color:Red; font-size:x-large; font-weight:bolder;"/>
+                                </af:panelGroupLayout>
+                                <af:inputText label="User ID :" id="it1" clientComponent="true" required="true"
+                                              value="#{LogonBean.userId}" autoSubmit="true"/>
+                                <af:inputText label="Password :" id="it2" clientComponent="true" required="true"
+                                              secret="true" value="#{LogonBean.password}" autoSubmit="true"/>                                
+                                <af:panelGroupLayout id="pgl3" layout="horizontal">
+                                <af:button text="Login" id="b1" action="#{LogonBean.LoginAction}" useWindow="true"
+                                           windowEmbedStyle="window" windowModalityType="applicationModal"
+                                           windowHeight="680" windowWidth="1200">
+                                <af:clientListener type="action" method="newWindow"/>
+                                
+                                </af:button>
+                               
+                                <af:button text="Sign-Up" id="b3">
+                                    <af:showPopupBehavior popupId="p1" triggerType="action"/>
+                                </af:button>
+                                </af:panelGroupLayout>
+                            </af:panelFormLayout>
+                            <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                                <af:panelWindow id="pw1" contentHeight="400" contentWidth="600">
+                                    <af:panelGroupLayout id="pgl4" layout="vertical" halign="center">
+                                    <af:panelFormLayout id="pfl2">
+                                            <af:spacer width="10" height="30" id="s8"/>
+                                            <af:inputText label="User Id" id="it3"/>
+                                            <af:spacer width="10" height="10" id="s5"/>
+                                            <af:inputText label="Password" id="it4"/>
+                                            <af:spacer width="10" height="10" id="s7"/>
+                                            <af:inputText label="Confirm Password" id="it7" secret="true"/>
+                                            <af:spacer width="10" height="10" id="s11"/>
+                                            <af:inputText label="Email" id="it5"/>
+                                            <af:spacer width="10" height="10" id="s6"/>
+                                            <af:inputText label="Nick Name" id="it6"/>
+                                            <af:spacer width="10" height="20" id="s9"/>
+                                            <af:button text="Submit" id="b2"/>
+                                            <af:spacer width="10" height="20" id="s10"/>
+                                        </af:panelFormLayout>
+                                    </af:panelGroupLayout>
+                                </af:panelWindow>
+                            </af:popup>
+                        </af:panelGroupLayout>
+                    </af:panelHeader>
+                </f:facet>
+                <f:facet name="start">
+                    <af:spacer width="10" height="10" id="s2"/>
+                </f:facet>
+                <f:facet name="end">
+                    <af:spacer width="10" height="10" id="s3"/>
+                </f:facet>
+                <f:facet name="top">
+                    <af:spacer width="10" height="10" id="s4"/>
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+        <f:facet name="metaContainer">
+            <af:resource type="javascript">
+              function login(url) {
+                  var pfIndex = AdfPage.PAGE.findComponent("it1").getValue();
+                  var branchCode = AdfPage.PAGE.findComponent("soc1").getSubmittedValue();
+                  var userLevel = AdfPage.PAGE.findComponent("soc2").getSubmittedValue();
+                  var userType = AdfPage.PAGE.findComponent("soc3").getSubmittedValue();
+                  var param = "pfindex=" + pfIndex + "&amp;branchcd=" + branchCode + "&amp;userlevel=" + userLevel + "&amp;usertype=" + userType;
+                  window.open(url + param, "new");
+              }
+               function newWindow() {
+                      var newTarget = document.getElementById("f1").target + 1;
+                      document.getElementById("f1").target = newTarget;
+                  }
+            </af:resource>
+            
+        </f:facet>
+    </af:document>
+</f:view>

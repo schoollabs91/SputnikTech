@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="NoticeBoardBTF">
+    <default-activity>NoticeBoard</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <view id="NoticeBoard">
+      <page>/fragments/NoticeBoard.jsff</page>
+    </view>
+    <view id="NoticeBoardAddEditPage">
+      <page>/fragments/NoticeBoardAddEditPage.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>NoticeBoard</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>addedit</from-outcome>
+        <to-activity-id>NoticeBoardAddEditPage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>NoticeBoardAddEditPage</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>NoticeBoard</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

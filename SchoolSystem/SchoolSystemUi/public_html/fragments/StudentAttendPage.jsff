@@ -1,0 +1,530 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <c:set var="schoolsystemuiBundle" value="#{adfBundle['schoolsystemui.fragments.StudentAttendPageBundle']}"/>
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelHeader text="#{schoolsystemuiBundle.ATTENDANCE_SHEET}" id="ph1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+         
+          <af:button text="Save" id="b11" actionListener="#{bindings.Commit.execute}" icon="/images/sCheck.png"/>
+          <af:button text="Back" id="b21" actionListener="#{bindings.Rollback.execute}" immediate="true" action="back"
+                     icon="/images/backsimple.png">
+              <af:resetActionListener/>
+            </af:button>        
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+        <af:panelGroupLayout layout="vertical" id="pgl3">
+          
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.SStudAttendSearchCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.SStudAttendSearchCriteriaQuery.queryModel}"
+                      queryListener="#{backingBeanScope.StudentAttendanceSearchBean.OnQuery}"
+                      queryOperationListener="#{bindings.SStudAttendSearchCriteriaQuery.processQueryOperation}"
+                      resultComponentId="::t2" maxColumns="3" rows="2" saveQueryMode="hidden"
+                      modeChangeVisible="false" labelAlignment="top"/>
+          
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl6" halign="center" layout="vertical"/>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:panelGroupLayout id="pgl7" layout="horizontal" halign="center">
+        <af:button  text="Create Attendance List"
+                          id="b1" >
+                <af:showPopupBehavior popupId="::p1" triggerType="action"/>
+              </af:button>
+          </af:panelGroupLayout>
+        <af:spacer width="10" height="10" id="s2"/>
+        <af:table value="#{bindings.SStudAttendVO1.collectionModel}" var="row"
+                    rows="#{bindings.SStudAttendVO1.rangeSize}"
+                    emptyText="#{bindings.SStudAttendVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="1" selectedRowKeys="#{bindings.SStudAttendVO1.collectionModel.selectedRow}"
+                    rowSelection="multiple" fetchSize="#{bindings.SStudAttendVO1.rangeSize}" id="t2"
+                    partialTriggers="::b1 l1">
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.SId.name}" sortable="true"
+                       headerText="#{bindings.SStudAttendVO1.hints.SId.label}" id="c1" rowHeader="true" frozen="true"
+                       width="50" rendered="false">
+              <af:inputText value="#{row.bindings.SId.inputValue}" label="#{bindings.SStudAttendVO1.hints.SId.label}"
+                            required="#{bindings.SStudAttendVO1.hints.SId.mandatory}"
+                            columns="#{bindings.SStudAttendVO1.hints.SId.displayWidth}"
+                            maximumLength="#{bindings.SStudAttendVO1.hints.SId.precision}"
+                            shortDesc="#{bindings.SStudAttendVO1.hints.SId.tooltip}" id="it1" readOnly="true">
+                <f:validator binding="#{row.bindings.SId.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.RollNo.name}" sortable="true"
+                       headerText="#{bindings.SStudAttendVO1.hints.RollNo.label}" id="c91" rowHeader="true" frozen="true"
+                       width="50">
+              <af:link text="#{row.bindings.RollNo.inputValue}" id="l1" partialSubmit="true"
+                       actionListener="#{bindings.ExecuteWithParams.execute}">
+                <af:showPopupBehavior popupId=":::p2" triggerType="action"/>
+              </af:link>
+              <af:inputText value="#{row.bindings.RollNo.inputValue}" label="#{bindings.SStudAttendVO1.hints.RollNo.label}"
+                            required="#{bindings.SStudAttendVO1.hints.RollNo.mandatory}"
+                            columns="#{bindings.SStudAttendVO1.hints.RollNo.displayWidth}"
+                            maximumLength="#{bindings.SStudAttendVO1.hints.RollNo.precision}"
+                            shortDesc="#{bindings.SStudAttendVO1.hints.RollNo.tooltip}" id="it91" readOnly="true"
+                            rendered="false">
+                <f:validator binding="#{row.bindings.RollNo.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D1.name}" sortable="true"
+                       headerText="1" id="c2" width="25">
+              <af:selectBooleanCheckbox value="#{row.bindings.D1.inputValue}"  id="sbc1">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+             
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D2.name}"  sortable="true" width="25"
+                       headerText="2" id="c3">
+             <af:selectBooleanCheckbox value="#{row.bindings.D2.inputValue}"  id="sbc2">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D3.name}" sortable="true" width="25"
+                       headerText="3" id="c4">
+            <af:selectBooleanCheckbox value="#{row.bindings.D3.inputValue}"  id="sbc3">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D4.name}" sortable="true" width="25"
+                       headerText="4" id="c5">
+             <af:selectBooleanCheckbox value="#{row.bindings.D4.inputValue}"  id="sbc4">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D5.name}" sortable="true" width="25"
+                       headerText="5" id="c6">
+            <af:selectBooleanCheckbox value="#{row.bindings.D5.inputValue}"  id="sbc5">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D6.name}" sortable="true" width="25"
+                       headerText="6" id="c7">
+            <af:selectBooleanCheckbox value="#{row.bindings.D6.inputValue}"  id="sbc6">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D7.name}" sortable="true" width="25"
+                       headerText="7" id="c8">
+             <af:selectBooleanCheckbox value="#{row.bindings.D7.inputValue}"  id="sbc7">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D8.name}" sortable="true" width="25"
+                       headerText="8" id="c9">
+             <af:selectBooleanCheckbox value="#{row.bindings.D8.inputValue}"  id="sbc8">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D9.name}" sortable="true" width="25"
+                       headerText="9" id="c10">
+             <af:selectBooleanCheckbox value="#{row.bindings.D9.inputValue}"  id="sbc9">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D10.name}" sortable="true" width="25"
+                       headerText="10" id="c11">
+               <af:selectBooleanCheckbox value="#{row.bindings.D10.inputValue}"  id="sbc10">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D11.name}" sortable="true" width="25"
+                       headerText="11" id="c12">
+            <af:selectBooleanCheckbox value="#{row.bindings.D11.inputValue}"  id="sbc11">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D12.name}" sortable="true" width="25"
+                       headerText="12" id="c13">
+             <af:selectBooleanCheckbox value="#{row.bindings.D12.inputValue}"  id="sbc12">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D13.name}" sortable="true" width="25"
+                       headerText="13" id="c14">
+             <af:selectBooleanCheckbox value="#{row.bindings.D13.inputValue}"  id="sbc13">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D14.name}" sortable="true" width="25"
+                       headerText="14" id="c15" >
+              <af:selectBooleanCheckbox value="#{row.bindings.D14.inputValue}"  id="sbc14">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D15.name}" sortable="true" width="25"
+                       headerText="15" id="c16">
+             <af:selectBooleanCheckbox value="#{row.bindings.D15.inputValue}"  id="sbc15">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D16.name}" sortable="true" width="25"
+                       headerText="16" id="c17">
+            <af:selectBooleanCheckbox value="#{row.bindings.D16.inputValue}"  id="sbc16">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D17.name}" sortable="true" width="25"
+                       headerText="17" id="c18">
+               <af:selectBooleanCheckbox value="#{row.bindings.D17.inputValue}"  id="sbc17">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D18.name}" sortable="true" width="25"
+                       headerText="18" id="c19">
+             <af:selectBooleanCheckbox value="#{row.bindings.D18.inputValue}"  id="sbc18">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D19.name}" sortable="true" width="25"
+                       headerText="19" id="c20">
+            <af:selectBooleanCheckbox value="#{row.bindings.D19.inputValue}"  id="sbc19">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D20.name}" sortable="true" width="25"
+                       headerText="20" id="c21">
+             <af:selectBooleanCheckbox value="#{row.bindings.D20.inputValue}"  id="sbc20">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D21.name}" sortable="true" width="25"
+                       headerText="21" id="c22">
+              <af:selectBooleanCheckbox value="#{row.bindings.D21.inputValue}"  id="sbc21">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D22.name}" sortable="true" width="25"
+                       headerText="22" id="c23">
+            <af:selectBooleanCheckbox value="#{row.bindings.D22.inputValue}"  id="sbc22">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D23.name}" sortable="true" width="25"
+                       headerText="23" id="c24">
+             <af:selectBooleanCheckbox value="#{row.bindings.D23.inputValue}"  id="sbc23">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D24.name}" sortable="true" width="25"
+                       headerText="24" id="c25">
+              <af:selectBooleanCheckbox value="#{row.bindings.D24.inputValue}"  id="sbc24">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D25.name}" sortable="true" width="25"
+                       headerText="25" id="c26">
+             <af:selectBooleanCheckbox value="#{row.bindings.D25.inputValue}"  id="sbc25">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D26.name}" sortable="true" width="25"
+                       headerText="26" id="c27">
+              <af:selectBooleanCheckbox value="#{row.bindings.D26.inputValue}"  id="sbc26">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D27.name}" sortable="true" width="25"
+                       headerText="27" id="c28">
+             <af:selectBooleanCheckbox value="#{row.bindings.D27.inputValue}"  id="sbc27">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D28.name}" sortable="true" width="25"
+                       headerText="28" id="c29">
+             <af:selectBooleanCheckbox value="#{row.bindings.D28.inputValue}"  id="sbc28">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D29.name}" sortable="true" width="25"
+                       headerText="29" id="c30">
+             <af:selectBooleanCheckbox value="#{row.bindings.D29.inputValue}"  id="sbc29">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D30.name}" sortable="true" width="25"
+                       headerText="30" id="c31">
+              <af:selectBooleanCheckbox value="#{row.bindings.D30.inputValue}"  id="sbc30">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D31.name}" sortable="true" width="25"
+                       headerText="31" id="c32">
+             <af:selectBooleanCheckbox value="#{row.bindings.D31.inputValue}"  id="sbc31"
+                                      >
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.Total.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.Total.label}" id="c33">
+              <af:inputText  id="it2" value="#{row.bindings.Total.inputValue}" readOnly="true"/>
+            </af:column>
+          </af:table>
+        
+        <af:popup childCreation="deferred" autoCancel="disabled" id="p2" contentDelivery="lazyUncached">
+          <af:panelWindow id="pw2" contentHeight="300" contentWidth="500">
+            <af:panelHeader text="Student Details" id="ph2">
+              <f:facet name="context"/>
+              <f:facet name="menuBar"/>
+              <f:facet name="toolbar"/>
+              <f:facet name="legend"/>
+              <f:facet name="info"/>
+              <af:panelGroupLayout id="pgl5" layout="vertical" halign="center">
+                <af:panelFormLayout id="pfl2" maxColumns="2">
+                  <af:inputText value="#{bindings.SId.inputValue}" label="#{bindings.SId.hints.label}"
+                                required="#{bindings.SId.hints.mandatory}" columns="#{bindings.SId.hints.displayWidth}"
+                                maximumLength="#{bindings.SId.hints.precision}"
+                                shortDesc="#{bindings.SId.hints.tooltip}" id="it3">
+                    <f:validator binding="#{bindings.SId.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SFirstName.inputValue}" label="#{bindings.SFirstName.hints.label}"
+                                required="#{bindings.SFirstName.hints.mandatory}"
+                                columns="#{bindings.SFirstName.hints.displayWidth}"
+                                maximumLength="#{bindings.SFirstName.hints.precision}"
+                                shortDesc="#{bindings.SFirstName.hints.tooltip}" id="it4">
+                    <f:validator binding="#{bindings.SFirstName.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SLastName.inputValue}" label="#{bindings.SLastName.hints.label}"
+                                required="#{bindings.SLastName.hints.mandatory}"
+                                columns="#{bindings.SLastName.hints.displayWidth}"
+                                maximumLength="#{bindings.SLastName.hints.precision}"
+                                shortDesc="#{bindings.SLastName.hints.tooltip}" id="it5">
+                    <f:validator binding="#{bindings.SLastName.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SMiddleName.inputValue}" label="#{bindings.SMiddleName.hints.label}"
+                                required="#{bindings.SMiddleName.hints.mandatory}"
+                                columns="#{bindings.SMiddleName.hints.displayWidth}"
+                                maximumLength="#{bindings.SMiddleName.hints.precision}"
+                                shortDesc="#{bindings.SMiddleName.hints.tooltip}" id="it6">
+                    <f:validator binding="#{bindings.SMiddleName.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SGender.inputValue}" label="#{bindings.SGender.hints.label}"
+                                required="#{bindings.SGender.hints.mandatory}"
+                                columns="#{bindings.SGender.hints.displayWidth}"
+                                maximumLength="#{bindings.SGender.hints.precision}"
+                                shortDesc="#{bindings.SGender.hints.tooltip}" id="it7">
+                    <f:validator binding="#{bindings.SGender.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SNationality.inputValue}" label="#{bindings.SNationality.hints.label}"
+                                required="#{bindings.SNationality.hints.mandatory}"
+                                columns="#{bindings.SNationality.hints.displayWidth}"
+                                maximumLength="#{bindings.SNationality.hints.precision}"
+                                shortDesc="#{bindings.SNationality.hints.tooltip}" id="it8">
+                    <f:validator binding="#{bindings.SNationality.validator}"/>
+                  </af:inputText>
+                  <af:inputDate value="#{bindings.SDateOfBitrh.inputValue}" label="#{bindings.SDateOfBitrh.hints.label}"
+                                required="#{bindings.SDateOfBitrh.hints.mandatory}"
+                                columns="#{bindings.SDateOfBitrh.hints.displayWidth}"
+                                shortDesc="#{bindings.SDateOfBitrh.hints.tooltip}" id="id1">
+                    <f:validator binding="#{bindings.SDateOfBitrh.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.SDateOfBitrh.format}"/>
+                  </af:inputDate>
+                  <af:inputText value="#{bindings.SBirthPlace.inputValue}" label="#{bindings.SBirthPlace.hints.label}"
+                                required="#{bindings.SBirthPlace.hints.mandatory}"
+                                columns="#{bindings.SBirthPlace.hints.displayWidth}"
+                                maximumLength="#{bindings.SBirthPlace.hints.precision}"
+                                shortDesc="#{bindings.SBirthPlace.hints.tooltip}" id="it9">
+                    <f:validator binding="#{bindings.SBirthPlace.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SAdressLine1.inputValue}" label="#{bindings.SAdressLine1.hints.label}"
+                                required="#{bindings.SAdressLine1.hints.mandatory}"
+                                columns="#{bindings.SAdressLine1.hints.displayWidth}"
+                                maximumLength="#{bindings.SAdressLine1.hints.precision}"
+                                shortDesc="#{bindings.SAdressLine1.hints.tooltip}" id="it10">
+                    <f:validator binding="#{bindings.SAdressLine1.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SAdressLine2.inputValue}" label="#{bindings.SAdressLine2.hints.label}"
+                                required="#{bindings.SAdressLine2.hints.mandatory}"
+                                columns="#{bindings.SAdressLine2.hints.displayWidth}"
+                                maximumLength="#{bindings.SAdressLine2.hints.precision}"
+                                shortDesc="#{bindings.SAdressLine2.hints.tooltip}" id="it11">
+                    <f:validator binding="#{bindings.SAdressLine2.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SCity.inputValue}" label="#{bindings.SCity.hints.label}"
+                                required="#{bindings.SCity.hints.mandatory}"
+                                columns="#{bindings.SCity.hints.displayWidth}"
+                                maximumLength="#{bindings.SCity.hints.precision}"
+                                shortDesc="#{bindings.SCity.hints.tooltip}" id="it12">
+                    <f:validator binding="#{bindings.SCity.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SBloodGroup.inputValue}" label="#{bindings.SBloodGroup.hints.label}"
+                                required="#{bindings.SBloodGroup.hints.mandatory}"
+                                columns="#{bindings.SBloodGroup.hints.displayWidth}"
+                                maximumLength="#{bindings.SBloodGroup.hints.precision}"
+                                shortDesc="#{bindings.SBloodGroup.hints.tooltip}" id="it13">
+                    <f:validator binding="#{bindings.SBloodGroup.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SState.inputValue}" label="#{bindings.SState.hints.label}"
+                                required="#{bindings.SState.hints.mandatory}"
+                                columns="#{bindings.SState.hints.displayWidth}"
+                                maximumLength="#{bindings.SState.hints.precision}"
+                                shortDesc="#{bindings.SState.hints.tooltip}" id="it14">
+                    <f:validator binding="#{bindings.SState.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SPin.inputValue}" label="#{bindings.SPin.hints.label}"
+                                required="#{bindings.SPin.hints.mandatory}"
+                                columns="#{bindings.SPin.hints.displayWidth}"
+                                maximumLength="#{bindings.SPin.hints.precision}"
+                                shortDesc="#{bindings.SPin.hints.tooltip}" id="it15">
+                    <f:validator binding="#{bindings.SPin.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SCountry.inputValue}" label="#{bindings.SCountry.hints.label}"
+                                required="#{bindings.SCountry.hints.mandatory}"
+                                columns="#{bindings.SCountry.hints.displayWidth}"
+                                maximumLength="#{bindings.SCountry.hints.precision}"
+                                shortDesc="#{bindings.SCountry.hints.tooltip}" id="it16">
+                    <f:validator binding="#{bindings.SCountry.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SAddressLine3.inputValue}"
+                                label="#{bindings.SAddressLine3.hints.label}"
+                                required="#{bindings.SAddressLine3.hints.mandatory}"
+                                columns="#{bindings.SAddressLine3.hints.displayWidth}"
+                                maximumLength="#{bindings.SAddressLine3.hints.precision}"
+                                shortDesc="#{bindings.SAddressLine3.hints.tooltip}" id="it17">
+                    <f:validator binding="#{bindings.SAddressLine3.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SFatherName.inputValue}" label="#{bindings.SFatherName.hints.label}"
+                                required="#{bindings.SFatherName.hints.mandatory}"
+                                columns="#{bindings.SFatherName.hints.displayWidth}"
+                                maximumLength="#{bindings.SFatherName.hints.precision}"
+                                shortDesc="#{bindings.SFatherName.hints.tooltip}" id="it18">
+                    <f:validator binding="#{bindings.SFatherName.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SMotherName.inputValue}" label="#{bindings.SMotherName.hints.label}"
+                                required="#{bindings.SMotherName.hints.mandatory}"
+                                columns="#{bindings.SMotherName.hints.displayWidth}"
+                                maximumLength="#{bindings.SMotherName.hints.precision}"
+                                shortDesc="#{bindings.SMotherName.hints.tooltip}" id="it19">
+                    <f:validator binding="#{bindings.SMotherName.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SPhoneNo.inputValue}" label="#{bindings.SPhoneNo.hints.label}"
+                                required="#{bindings.SPhoneNo.hints.mandatory}"
+                                columns="#{bindings.SPhoneNo.hints.displayWidth}"
+                                maximumLength="#{bindings.SPhoneNo.hints.precision}"
+                                shortDesc="#{bindings.SPhoneNo.hints.tooltip}" id="it20">
+                    <f:validator binding="#{bindings.SPhoneNo.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SFamilyIncome.inputValue}"
+                                label="#{bindings.SFamilyIncome.hints.label}"
+                                required="#{bindings.SFamilyIncome.hints.mandatory}"
+                                columns="#{bindings.SFamilyIncome.hints.displayWidth}"
+                                maximumLength="#{bindings.SFamilyIncome.hints.precision}"
+                                shortDesc="#{bindings.SFamilyIncome.hints.tooltip}" id="it21">
+                    <f:validator binding="#{bindings.SFamilyIncome.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.SFamilyIncome.format}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SFatherOccupation.inputValue}"
+                                label="#{bindings.SFatherOccupation.hints.label}"
+                                required="#{bindings.SFatherOccupation.hints.mandatory}"
+                                columns="#{bindings.SFatherOccupation.hints.displayWidth}"
+                                maximumLength="#{bindings.SFatherOccupation.hints.precision}"
+                                shortDesc="#{bindings.SFatherOccupation.hints.tooltip}" id="it22">
+                    <f:validator binding="#{bindings.SFatherOccupation.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SFatherQual.inputValue}" label="#{bindings.SFatherQual.hints.label}"
+                                required="#{bindings.SFatherQual.hints.mandatory}"
+                                columns="#{bindings.SFatherQual.hints.displayWidth}"
+                                maximumLength="#{bindings.SFatherQual.hints.precision}"
+                                shortDesc="#{bindings.SFatherQual.hints.tooltip}" id="it23">
+                    <f:validator binding="#{bindings.SFatherQual.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SMotherOccupation.inputValue}"
+                                label="#{bindings.SMotherOccupation.hints.label}"
+                                required="#{bindings.SMotherOccupation.hints.mandatory}"
+                                columns="#{bindings.SMotherOccupation.hints.displayWidth}"
+                                maximumLength="#{bindings.SMotherOccupation.hints.precision}"
+                                shortDesc="#{bindings.SMotherOccupation.hints.tooltip}" id="it24">
+                    <f:validator binding="#{bindings.SMotherOccupation.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SMotherQual.inputValue}" label="#{bindings.SMotherQual.hints.label}"
+                                required="#{bindings.SMotherQual.hints.mandatory}"
+                                columns="#{bindings.SMotherQual.hints.displayWidth}"
+                                maximumLength="#{bindings.SMotherQual.hints.precision}"
+                                shortDesc="#{bindings.SMotherQual.hints.tooltip}" id="it25">
+                    <f:validator binding="#{bindings.SMotherQual.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.ClassCode.inputValue}" label="#{bindings.ClassCode.hints.label}"
+                                required="#{bindings.ClassCode.hints.mandatory}"
+                                columns="#{bindings.ClassCode.hints.displayWidth}"
+                                maximumLength="#{bindings.ClassCode.hints.precision}"
+                                shortDesc="#{bindings.ClassCode.hints.tooltip}" id="it26">
+                    <f:validator binding="#{bindings.ClassCode.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SectionCode1.inputValue}" label="#{bindings.SectionCode1.hints.label}"
+                                required="#{bindings.SectionCode1.hints.mandatory}"
+                                columns="#{bindings.SectionCode1.hints.displayWidth}"
+                                maximumLength="#{bindings.SectionCode1.hints.precision}"
+                                shortDesc="#{bindings.SectionCode1.hints.tooltip}" id="it27">
+                    <f:validator binding="#{bindings.SectionCode1.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.SessionCode1.inputValue}" label="#{bindings.SessionCode1.hints.label}"
+                                required="#{bindings.SessionCode1.hints.mandatory}"
+                                columns="#{bindings.SessionCode1.hints.displayWidth}"
+                                maximumLength="#{bindings.SessionCode1.hints.precision}"
+                                shortDesc="#{bindings.SessionCode1.hints.tooltip}" id="it28">
+                    <f:validator binding="#{bindings.SessionCode1.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.RollNo.inputValue}" label="#{bindings.RollNo.hints.label}"
+                                required="#{bindings.RollNo.hints.mandatory}"
+                                columns="#{bindings.RollNo.hints.displayWidth}"
+                                maximumLength="#{bindings.RollNo.hints.precision}"
+                                shortDesc="#{bindings.RollNo.hints.tooltip}" id="it29">
+                    <f:validator binding="#{bindings.RollNo.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.RollNo.format}"/>
+                  </af:inputText>
+                </af:panelFormLayout>
+              </af:panelGroupLayout>
+            </af:panelHeader>
+          </af:panelWindow>
+        </af:popup>
+        <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+          <af:panelWindow id="pw1" >
+            <af:panelHeader text="Create Attendance List" id="ph3">
+              <f:facet name="context"/>
+              <f:facet name="menuBar"/>
+              <f:facet name="toolbar"/>
+              <f:facet name="legend"/>
+              <f:facet name="info"/>
+              <af:panelGroupLayout id="pgl4" layout="vertical">
+                <af:panelFormLayout id="pfl1" maxColumns="2">
+                  <af:selectOneChoice value="#{bindings.SessionCode.inputValue}" label="#{bindings.SessionCode.label}"
+                                      required="#{bindings.SessionCode.hints.mandatory}"
+                                      shortDesc="#{bindings.SessionCode.hints.tooltip}" id="soc1">
+                    <f:selectItems value="#{bindings.SessionCode.items}" id="si1"/>
+                    <f:validator binding="#{bindings.SessionCode.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.ClassClode.inputValue}" label="#{bindings.ClassClode.label}"
+                                      required="#{bindings.ClassClode.hints.mandatory}"
+                                      shortDesc="#{bindings.ClassClode.hints.tooltip}" id="soc2">
+                    <f:selectItems value="#{bindings.ClassClode.items}" id="si2"/>
+                    <f:validator binding="#{bindings.ClassClode.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.SectionCode.inputValue}" label="#{bindings.SectionCode.label}"
+                                      required="#{bindings.SectionCode.hints.mandatory}"
+                                      shortDesc="#{bindings.SectionCode.hints.tooltip}" id="soc3">
+                    <f:selectItems value="#{bindings.SectionCode.items}" id="si3"/>
+                    <f:validator binding="#{bindings.SectionCode.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.SMonth.inputValue}" label="#{bindings.SMonth.label}"
+                                      required="#{bindings.SMonth.hints.mandatory}"
+                                      shortDesc="#{bindings.SMonth.hints.tooltip}" id="soc4">
+                    <f:selectItems value="#{bindings.SMonth.items}" id="si4"/>
+                    <f:validator binding="#{bindings.SMonth.validator}"/>
+                  </af:selectOneChoice>
+                  <af:button text="Create the List" id="b2"
+                             actionListener="#{backingBeanScope.StudentAttendanceSearchBean.createAttendanceList}"/>
+                </af:panelFormLayout>
+              </af:panelGroupLayout>
+            </af:panelHeader>
+          </af:panelWindow>
+        </af:popup>
+      </af:panelGroupLayout>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</ui:composition>

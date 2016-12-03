@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelHeader text="Add Notice" id="ph1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+         <af:button actionListener="#{bindings.Previous.execute}"
+                     disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b3"
+                    icon="/images/arrows-prev.png"/>
+          <af:button actionListener="#{bindings.Next.execute}" disabled="#{!bindings.Next.enabled}"
+                     partialSubmit="true" id="b4" icon="/images/arrow-next.png"/>
+          <af:button actionListener="#{bindings.CreateInsert.execute}" 
+                     disabled="#{!bindings.CreateInsert.enabled}" id="b5" icon="/images/s_Add.png"/>
+          <af:button actionListener="#{bindings.Commit.execute}" text="Save" 
+                     id="b1" icon="/images/sCheck.png"/>
+          <af:button actionListener="#{bindings.Rollback.execute}" text="Back"
+                     icon="/images/backsimple.png" immediate="true" id="b2"
+                     action="back">
+            <af:resetActionListener/>
+          </af:button>
+         
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelGroupLayout id="pgl2">
+        <af:panelFormLayout id="pfl1" partialTriggers="b3 b4 b5 b1 b2">
+          <af:spacer width="10" height="10" id="s1"/>
+          <af:inputText value="#{bindings.NId.inputValue}" label="#{bindings.NId.hints.label}"
+                        required="#{bindings.NId.hints.mandatory}" columns="#{bindings.NId.hints.displayWidth}"
+                        maximumLength="#{bindings.NId.hints.precision}" shortDesc="#{bindings.NId.hints.tooltip}"
+                        id="it1" rendered="false">
+            <f:validator binding="#{bindings.NId.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.NId.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.NSubject.inputValue}" label="#{bindings.NSubject.hints.label}"
+                        required="#{bindings.NSubject.hints.mandatory}"
+                        columns="#{bindings.NSubject.hints.displayWidth}"
+                        maximumLength="#{bindings.NSubject.hints.precision}"
+                        shortDesc="#{bindings.NSubject.hints.tooltip}" id="it2" rows="2">
+            <f:validator binding="#{bindings.NSubject.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.NContent.inputValue}" label="#{bindings.NContent.hints.label}"
+                        required="#{bindings.NContent.hints.mandatory}"
+                        columns="#{bindings.NContent.hints.displayWidth}"
+                        maximumLength="#{bindings.NContent.hints.precision}"
+                        shortDesc="#{bindings.NContent.hints.tooltip}" id="it3" rows="25">
+            <f:validator binding="#{bindings.NContent.validator}"/>
+          </af:inputText>
+          <af:inputDate value="#{bindings.NPublishDate.inputValue}" label="#{bindings.NPublishDate.hints.label}"
+                        required="#{bindings.NPublishDate.hints.mandatory}"
+                        columns="#{bindings.NPublishDate.hints.displayWidth}"
+                        shortDesc="#{bindings.NPublishDate.hints.tooltip}" id="id1">
+            <f:validator binding="#{bindings.NPublishDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.NPublishDate.format}"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.NPublishBy.inputValue}" label="#{bindings.NPublishBy.hints.label}"
+                        required="#{bindings.NPublishBy.hints.mandatory}"
+                        columns="#{bindings.NPublishBy.hints.displayWidth}"
+                        maximumLength="#{bindings.NPublishBy.hints.precision}"
+                        shortDesc="#{bindings.NPublishBy.hints.tooltip}" id="it4">
+            <f:validator binding="#{bindings.NPublishBy.validator}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+      </af:panelGroupLayout>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</ui:composition>

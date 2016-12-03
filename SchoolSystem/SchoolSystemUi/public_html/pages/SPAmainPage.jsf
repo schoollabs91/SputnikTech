@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="SPAmainPage.jsf" id="d1">
+     <af:resource type="javascript">
+
+            function openPopup(evt) {
+            
+            var popup = AdfPage.PAGE.findComponentByAbsoluteId('pt_p11');
+            popup.show();
+            evt.cancel();
+//            var timeOutPeriod = 50 * 1000; // 50 sec
+//             setTimeout(function closePopup(){popup.hide();}, timeOutPeriod);
+                     }
+              </af:resource>
+ <af:resource type="css">
+                            select {
+                               /* -webkit-appearance: listbox;*/
+                                 width:150px;
+                                background-repeat: no-repeat;
+                            }  
+                        </af:resource>
+                        <af:resource type="javascript">
+                          function newWindow() {
+                              var newTarget = document.getElementById("f1").target + 1;
+                              document.getElementById("f1").target = newTarget;
+                          }
+                        </af:resource>
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGroupLayout id="pgl8" layout="vertical" halign="center">
+            <af:panelGroupLayout id="pgl1" layout="vertical" halign="center" inlineStyle="width:950px;" valign="middle">
+            <af:panelGridLayout id="pt_pgl1">
+                        <af:gridRow height="50px" id="pt_gr1">
+                            <af:gridCell width="95%" halign="stretch" valign="stretch" id="pt_gc1">
+                                <!-- Partial Header -->
+                                <af:panelGroupLayout id="pt_pgl2" layout="horizontal"
+                                                     inlineStyle="background-color:White;">
+                                    <af:toolbar id="pt_t1">
+                                        <af:link icon="/images/navigator_ena.png" id="pt_l4" partialSubmit="true"
+                                                 immediate="true">
+                                            <!--<af:showPopupBehavior popupId="p1" triggerType="click"/>-->
+                                            <af:clientListener method="openPopup" type="action"/>
+                                        </af:link>
+                                        <af:outputText value="कaksha" id="pt_ot2"
+                                                       inlineStyle="color:Green; font-size:x-large; font-weight:bolder;"/>
+                                        <!--<af:link id="pt_l2" icon="/images/banner.png" partialSubmit="true"/>-->
+                                        <af:spacer width="300" height="10" id="pt_s1"/>
+                                        <af:link id="pt_l3" icon="/images/home_ena.png" partialSubmit="true"
+                                                 text="Home"></af:link>
+                                        <af:link id="pt_l5" icon="/images/favorites_ena.png" text="Favorite"/>
+                                        <af:link id="pt_l6" icon="/images/watchlist_ena.png"/>
+                                        <af:link id="pt_l7" icon="/images/notifications_ena.png" partialSubmit="true"
+                                                 text="Notification">
+                                            <af:showPopupBehavior popupId="pt_p2" triggerType="action" align="beforeEnd"
+                                                                  alignId="s1"/>
+                                        </af:link>
+                                        <!--<af:link id="pt_l8" icon="/images/accessibility_ena.png"/>-->
+                                        <af:link id="pt_l9" icon="/images/help_ena.png" text="Help"/>
+                                        <af:outputText value="#{LogonBean.userId}" id="pt_ot1"
+                                                       inlineStyle="color:White; font-weight:bold;"/>
+                                        <af:spacer width="5" height="10" id="pt_s15"/>
+                                        <af:link id="pt_l10" 
+                                                 partialSubmit="true" icon="/images/accessibility_ena.png"
+                                                 immediate="true" text="Profile">
+                                            <af:showPopupBehavior popupId="pt_p1" triggerType="mouseOver"/>
+                                        </af:link>
+                                        <af:spacer width="100" height="10" id="pt_s5"/>
+                                        <af:popup childCreation="deferred" autoCancel="disabled" id="pt_p1">
+                                            <af:noteWindow id="pt_nw1">
+                                                <af:panelGroupLayout id="pt_pgl6" layout="vertical">
+                                                    <af:image source="/images/IMG_20160130_175930320.jpg" id="pt_i1"/>
+                                                    <af:spacer width="10" height="5" id="s8"/>
+                                                    <af:separator id="s9"/>
+                                                    <af:spacer width="10" height="5" id="s10"/>
+                                                    <af:panelGroupLayout id="pt_pgl7" layout="horizontal">
+                                                        <af:button text="My Account" id="pt_b1"/>
+                                                        <af:spacer width="10" height="10" id="pt_s4"/>
+                                                        <af:button text="Sign Out" id="pt_b2"
+                                                                   actionListener="#{LogonBean.doLogout}"
+                                                                   partialSubmit="false"/>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                            </af:noteWindow>
+                                        </af:popup>
+                                        <af:popup childCreation="deferred" autoCancel="disabled" id="pt_p2">
+                                            <af:panelWindow id="pt_pw1" stretchChildren="first" resize="on">
+                                                <af:panelBox text="PanelBox1" id="pt_pb6">
+                                                    <f:facet name="toolbar"/>
+                                                    <af:table value="#{bindings.SNoticeBoardVO1.collectionModel}"
+                                                              var="row" rows="#{bindings.SNoticeBoardVO1.rangeSize}"
+                                                              emptyText="#{bindings.SNoticeBoardVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                              rowBandingInterval="0"
+                                                              selectedRowKeys="#{bindings.SNoticeBoardVO1.collectionModel.selectedRow}"
+                                                              selectionListener="#{bindings.SNoticeBoardVO1.collectionModel.makeCurrent}"
+                                                              rowSelection="single"
+                                                              fetchSize="#{bindings.SNoticeBoardVO1.rangeSize}" id="t1">
+                                                        <af:column headerText="#{bindings.SNoticeBoardVO1.hints.NId.label}"
+                                                                   id="c1">
+                                                            <af:outputText value="#{row.NId}"
+                                                                           shortDesc="#{bindings.SNoticeBoardVO1.hints.NId.tooltip}"
+                                                                           id="ot2">
+                                                                <af:convertNumber groupingUsed="false"
+                                                                                  pattern="#{bindings.SNoticeBoardVO1.hints.NId.format}"/>
+                                                            </af:outputText>
+                                                        </af:column>
+                                                        <af:column headerText="#{bindings.SNoticeBoardVO1.hints.NSubject.label}"
+                                                                   id="c2">
+                                                            <af:outputText value="#{row.NSubject}"
+                                                                           shortDesc="#{bindings.SNoticeBoardVO1.hints.NSubject.tooltip}"
+                                                                           id="ot3"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{bindings.SNoticeBoardVO1.hints.NContent.label}"
+                                                                   id="c3">
+                                                            <af:outputText value="#{row.NContent}"
+                                                                           shortDesc="#{bindings.SNoticeBoardVO1.hints.NContent.tooltip}"
+                                                                           id="ot4"/>
+                                                        </af:column>
+                                                        <af:column headerText="#{bindings.SNoticeBoardVO1.hints.NPublishDate.label}"
+                                                                   id="c4">
+                                                            <af:outputText value="#{row.NPublishDate}"
+                                                                           shortDesc="#{bindings.SNoticeBoardVO1.hints.NPublishDate.tooltip}"
+                                                                           id="ot5">
+                                                                <af:convertDateTime pattern="#{bindings.SNoticeBoardVO1.hints.NPublishDate.format}"/>
+                                                            </af:outputText>
+                                                        </af:column>
+                                                        <af:column headerText="#{bindings.SNoticeBoardVO1.hints.NPublishBy.label}"
+                                                                   id="c5">
+                                                            <af:outputText value="#{row.NPublishBy}"
+                                                                           shortDesc="#{bindings.SNoticeBoardVO1.hints.NPublishBy.tooltip}"
+                                                                           id="ot6"/>
+                                                        </af:column>
+                                                    </af:table>
+                                                </af:panelBox>
+                                            </af:panelWindow>
+                                        </af:popup>
+                                        <af:popup childCreation="deferred" autoCancel="disabled" id="pt_p11"
+                                                  clientComponent="true">
+                                            <af:panelGroupLayout id="pgl4" layout="vertical" inlineStyle="width:300px;">
+                                                <af:panelGroupLayout id="pgl5" layout="horizontal">
+                                                    <af:outputText value="Actions you like" id="ot1"/>
+                                                    <af:link icon="/images/navigator_ena.png" id="pt_l41"
+                                                             partialSubmit="true" immediate="true"
+                                                             actionListener="#{UiManager.ClosePopupActionListener}"></af:link>
+                                                </af:panelGroupLayout>
+                                                <af:panelGroupLayout id="pgl2" layout="scroll">
+                                                    <af:panelGroupLayout id="pgl3" layout="vertical"
+                                                                         inlineStyle="height:580px;">
+                                                        <af:panelAccordion discloseMany="false" id="pt_pa1">
+                                                            <af:showDetailItem id="pane1" text="Students"
+                                                                               disclosed="true">
+                                                                <af:spacer width="10" height="10" id="s12"/>
+                                                                <af:link text="Student Detail"
+                                                                         action="#{UiManager.studentBTF}" id="l5"
+                                                                         partialSubmit="true"/>
+                                                                <af:spacer width="10" height="10" id="s13"/>
+                                                                <af:separator id="s7"/>
+                                                                <af:spacer width="10" height="10" id="s14"/>
+                                                                <af:link text="Student Attendance"
+                                                                         action="#{UiManager.studentAttendBTF}" id="l1"
+                                                                         partialSubmit="true"/>
+                                                                <af:spacer width="10" height="10" id="s15"/>
+                                                                <af:separator id="s3"/>
+                                                                <af:spacer width="10" height="10" id="s16"/>
+                                                                <af:link text="BrowseStudents"
+                                                                         action="#{UiManager.browseStudents}" id="l10"/>
+                                                                <af:spacer width="10" height="10" id="s17"/>
+                                                                <af:separator id="s11"/>
+                                                                <af:spacer width="10" height="10" id="s18"/>
+                                                                <af:link text="Notice Board"
+                                                                         action="#{UiManager.noticeBoardBTF}" id="l2"
+                                                                         partialSubmit="true"/>
+                                                                <af:spacer width="10" height="10" id="s19"/>
+                                                            </af:showDetailItem>
+                                                            <af:showDetailItem id="pane2" text="Teacher">
+                                                                <af:spacer width="10" height="10" id="s20"/>
+                                                                <af:link text="Teacher Details"
+                                                                         action="#{UiManager.teacherBTF}" id="l3"
+                                                                         partialSubmit="true"/>
+                                                                <af:spacer width="10" height="10" id="s21"/>
+                                                                <af:separator id="s5"/>
+                                                                <af:spacer width="10" height="10" id="s22"/>
+                                                                <af:link text="Time Table"
+                                                                         action="#{UiManager.timeTableBTF}" id="l4"
+                                                                         partialSubmit="true"/>
+                                                                <af:spacer width="10" height="10" id="s23"/>
+                                                                <af:separator id="s6"/>
+                                                                <af:spacer width="10" height="10" id="s24"/>
+                                                                <af:link text="Teacher Attendance"
+                                                                         action="#{UiManager.teacherAttendBTF}"
+                                                                         id="l6" partialSubmit="true"/>
+                                                                <af:spacer width="10" height="10" id="s25"/>
+                                                            </af:showDetailItem>
+                                                            <af:showDetailItem id="pane3"
+                                                                               text="Library">
+                                                                <af:spacer width="10" height="10" id="s26"/>
+                                                                <af:link text="Book Store"
+                                                                         action="#{UiManager.bookStoreBTF}" id="l7"
+                                                                         partialSubmit="true"/>
+                                                                <af:spacer width="10" height="10" id="s27"/>
+                                                                <af:separator id="s4"/>
+                                                                <af:spacer width="10" height="10" id="s28"/>
+                                                                <af:link text="Book Assign/Return"
+                                                                         action="#{UiManager.bookReturnBTF}" id="l8"
+                                                                         partialSubmit="true"/>
+                                                                <af:spacer width="10" height="10" id="s29"/>
+                                                            </af:showDetailItem>
+                                                            <af:showDetailItem id="pane4"
+                                                                               text="Administration">
+                                                                <af:spacer width="10" height="10" id="s30"/>
+                                                                <af:link text="Configuration"
+                                                                         action="#{UiManager.listOfValuesBTF}" id="l9"
+                                                                         partialSubmit="true"/>
+                                                                <af:spacer width="10" height="10" id="s31"/>
+                                                                <af:separator id="s2"/>
+                                                                <af:spacer width="10" height="10" id="s32"/>
+                                                                <af:link text="Configure Users"
+                                                                         action="#{UiManager.configureUsersBTF}"
+                                                                         id="l11" partialSubmit="true"/>
+                                                                <af:spacer width="10" height="10" id="s33"/>
+                                                            </af:showDetailItem>
+                                                           
+                                                        </af:panelAccordion>
+                                                    </af:panelGroupLayout>
+                                                </af:panelGroupLayout>
+                                            </af:panelGroupLayout>
+                                        </af:popup>
+                                    </af:toolbar>
+                                </af:panelGroupLayout>
+                            </af:gridCell>
+                        </af:gridRow>
+                        <af:gridRow height="100%" id="pt_gr2">
+                            <af:gridCell width="95%" halign="stretch" valign="stretch" id="pt_gc2">
+                                <!-- Content -->
+                                <af:panelGroupLayout id="pt_pgl5" layout="vertical">
+                                    <!--<af:facetRef facetName="Content"/>-->
+                                    <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"
+                                               partialTriggers=" ::l1 ::l2 ::l3 ::l4 ::l5 ::l6 ::l7 ::l8 ::l9  ::l10 ::l11"/>
+                                    <af:panelGroupLayout id="pgl6" layout="horizontal" clientComponent="true"/>
+                                </af:panelGroupLayout>
+                            </af:gridCell>
+                        </af:gridRow>
+                        <af:gridRow height="10px" id="pt_gr31">
+                            <af:gridCell width="95%" halign="stretch" valign="stretch" id="pt_gc61">
+                                <!-- Partial Header -->
+                                <af:panelGroupLayout id="pgl7" layout="horizontal" clientComponent="true" halign="end">
+                                    <af:spacer width="10" height="10" id="s1" clientComponent="true"/>
+                                </af:panelGroupLayout>
+                            </af:gridCell>
+                        </af:gridRow>
+                    </af:panelGridLayout>
+              </af:panelGroupLayout>
+              </af:panelGroupLayout>
+        </af:form>
+    </af:document>
+</f:view>

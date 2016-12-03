@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="schoolsystemuiBundle" value="#{adfBundle['schoolsystemui.fragments.StudentAddEditPageBundle']}"/>
+    <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelHeader text="#{schoolsystemuiBundle.STUDENT_DETAILS}" id="ph1">
+            <f:facet name="context"/>
+            <f:facet name="menuBar"/>
+            <f:facet name="toolbar">
+                <af:toolbar id="t1">
+                    <af:button actionListener="#{bindings.Commit.execute}" text="Save" id="b1"
+                               icon="/images/sCheck.png"/>
+                    <af:button actionListener="#{bindings.Rollback.execute}" text="Back" immediate="true" id="b2"
+                               action="back" icon="/images/backsimple.png"/>
+                </af:toolbar>
+            </f:facet>
+            <f:facet name="legend"/>
+            <f:facet name="info"/>
+            <af:panelGroupLayout id="pgl2" layout="vertical">
+                <af:panelBox text="#{schoolsystemuiBundle.PERSONAL_DETAILS}" id="pb1">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout id="pgl8" layout="vertical" halign="center">
+                        <af:panelFormLayout id="pfl1" maxColumns="2" rows="5" labelAlignment="top"
+                                            styleClass="panelFormLayoutFocus">
+                            <af:inputText value="#{bindings.SId.inputValue}" label="#{bindings.SId.hints.label}"
+                                          required="#{bindings.SId.hints.mandatory}"
+                                          columns="30"
+                                          maximumLength="#{bindings.SId.hints.precision}"
+                                          shortDesc="#{bindings.SId.hints.tooltip}" id="it1">
+                                <f:validator binding="#{bindings.SId.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.SFirstName.inputValue}"
+                                          label="#{bindings.SFirstName.hints.label}"
+                                          required="#{bindings.SFirstName.hints.mandatory}"
+                                          columns="30"
+                                          maximumLength="#{bindings.SFirstName.hints.precision}"
+                                          shortDesc="#{bindings.SFirstName.hints.tooltip}" id="it2">
+                                <f:validator binding="#{bindings.SFirstName.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.SLastName.inputValue}"
+                                          label="#{bindings.SLastName.hints.label}"
+                                          required="#{bindings.SLastName.hints.mandatory}"
+                                          columns="30"
+                                          maximumLength="#{bindings.SLastName.hints.precision}"
+                                          shortDesc="#{bindings.SLastName.hints.tooltip}" id="it3">
+                                <f:validator binding="#{bindings.SLastName.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.SMiddleName.inputValue}"
+                                          label="#{bindings.SMiddleName.hints.label}"
+                                          required="#{bindings.SMiddleName.hints.mandatory}"
+                                          columns="30"
+                                          maximumLength="#{bindings.SMiddleName.hints.precision}"
+                                          shortDesc="#{bindings.SMiddleName.hints.tooltip}" id="it4">
+                                <f:validator binding="#{bindings.SMiddleName.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.SNationality.inputValue}"
+                                          label="#{bindings.SNationality.hints.label}"
+                                          required="#{bindings.SNationality.hints.mandatory}"
+                                          columns="30"
+                                          maximumLength="#{bindings.SNationality.hints.precision}"
+                                          shortDesc="#{bindings.SNationality.hints.tooltip}" id="it8">
+                                <f:validator binding="#{bindings.SNationality.validator}"/>
+                            </af:inputText>
+                            <af:inputDate value="#{bindings.SDateOfBitrh.inputValue}"
+                                          label="#{bindings.SDateOfBitrh.hints.label}"
+                                          required="#{bindings.SDateOfBitrh.hints.mandatory}"
+                                          columns="30"
+                                          shortDesc="#{bindings.SDateOfBitrh.hints.tooltip}" id="id1">
+                                <f:validator binding="#{bindings.SDateOfBitrh.validator}"/>
+                                <af:convertDateTime pattern="#{bindings.SDateOfBitrh.format}"/>
+                            </af:inputDate>
+                            <af:inputText value="#{bindings.SBirthPlace.inputValue}"
+                                          label="#{bindings.SBirthPlace.hints.label}"
+                                          required="#{bindings.SBirthPlace.hints.mandatory}"
+                                          columns="30"
+                                          maximumLength="#{bindings.SBirthPlace.hints.precision}"
+                                          shortDesc="#{bindings.SBirthPlace.hints.tooltip}" id="it9">
+                                <f:validator binding="#{bindings.SBirthPlace.validator}"/>
+                            </af:inputText>
+                            <af:selectOneChoice value="#{bindings.SBloodGroup.inputValue}"
+                                                label="#{bindings.SBloodGroup.label}"
+                                                required="#{bindings.SBloodGroup.hints.mandatory}"
+                                                shortDesc="#{bindings.SBloodGroup.hints.tooltip}" id="soc1">
+                                <f:selectItems value="#{bindings.SBloodGroup.items}" id="si1"/>
+                                <f:validator binding="#{bindings.SBloodGroup.validator}"/>
+                            </af:selectOneChoice>
+                            <af:selectOneChoice value="#{bindings.SGender.inputValue}" label="#{bindings.SGender.label}"
+                                                required="#{bindings.SGender.hints.mandatory}"
+                                                shortDesc="#{bindings.SGender.hints.tooltip}" id="soc2">
+                                <f:selectItems value="#{bindings.SGender.items}" id="si2"/>
+                                <f:validator binding="#{bindings.SGender.validator}"/>
+                            </af:selectOneChoice>
+                        </af:panelFormLayout>
+                        
+                        <af:inputText value="#{bindings.SBirthPlace.inputValue}"
+                                          label="#{bindings.SBirthPlace.hints.label}"
+                                          required="#{bindings.SBirthPlace.hints.mandatory}"
+                                          columns="30"
+                                          maximumLength="#{bindings.SBirthPlace.hints.precision}"
+                                          shortDesc="#{bindings.SBirthPlace.hints.tooltip}" id="it99"
+                                      styleClass="AFPhoneFieldText">
+                                <f:validator binding="#{bindings.SBirthPlace.validator}"/>
+                            </af:inputText>
+                    </af:panelGroupLayout>
+                </af:panelBox>
+                <af:panelBox text="#{schoolsystemuiBundle.ADDRESS_DETAILS}" id="pb2">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout id="pgl3" layout="vertical" halign="center"/>
+                </af:panelBox>
+                <af:panelBox text="#{schoolsystemuiBundle.PARENT_DETAILS}" id="pb3">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout id="pgl4" layout="vertical" valign="middle"/>
+                </af:panelBox>
+                <af:panelBox text="#{schoolsystemuiBundle.CLASS_DETAILS}" id="pb4">
+                    <f:facet name="toolbar"/>
+                    <af:panelGridLayout id="pgl12">
+                        <af:gridRow marginTop="5px" height="auto" id="gr15">
+                            <af:gridCell marginStart="5px" width="25%" id="gc61">
+                                <af:panelLabelAndMessage label="#{bindings.ClassCode.label}" id="plam28"/>
+                            </af:gridCell>
+                            <af:gridCell marginStart="5px" width="25%" id="gc62">
+                            <af:selectOneChoice value="#{bindings.ClassCode.inputValue}" 
+                                            required="#{bindings.ClassCode.hints.mandatory}"
+                                            shortDesc="#{bindings.ClassCode.hints.tooltip}" id="soc11">
+                            <f:selectItems value="#{bindings.ClassCode.items}" id="si11"/>
+                            <f:validator binding="#{bindings.ClassCode.validator}"/>
+                        </af:selectOneChoice>
+                       
+                            </af:gridCell>
+                            <af:gridCell marginStart="5px" width="25%" id="gc63">
+                                <af:panelLabelAndMessage label="#{bindings.SectionCode.label}" id="plam27"/>
+                            </af:gridCell>
+                            <af:gridCell marginStart="5px" width="25%" marginEnd="5px" id="gc64">
+                             <af:selectOneChoice value="#{bindings.SectionCode.inputValue}"
+                                            
+                                            required="#{bindings.SectionCode.hints.mandatory}"
+                                            shortDesc="#{bindings.SectionCode.hints.tooltip}" id="soc21">
+                            <f:selectItems value="#{bindings.SectionCode.items}" id="si21"/>
+                            <f:validator binding="#{bindings.SectionCode.validator}"/>
+                        </af:selectOneChoice>
+                        
+                            </af:gridCell>
+                        </af:gridRow>
+                        <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr16">
+                            <af:gridCell marginStart="5px" width="25%" id="gc65">
+                                <af:panelLabelAndMessage label="#{bindings.SessionCode.label}" id="plam26"/>
+                            </af:gridCell>
+                            <af:gridCell marginStart="5px" width="25%" id="gc66">
+                            <af:selectOneChoice value="#{bindings.SessionCode.inputValue}"
+                                            
+                                            required="#{bindings.SessionCode.hints.mandatory}"
+                                            shortDesc="#{bindings.SessionCode.hints.tooltip}" id="soc31">
+                            <f:selectItems value="#{bindings.SessionCode.items}" id="si13"/>
+                            <f:validator binding="#{bindings.SessionCode.validator}"/>
+                        </af:selectOneChoice>
+                        
+                            </af:gridCell>
+                            <af:gridCell marginStart="5px" width="25%" id="gc67">
+                                <af:panelLabelAndMessage label="#{bindings.RollNo.hints.label}" id="plam25"/>
+                            </af:gridCell>
+                            <af:gridCell marginStart="5px" width="25%" marginEnd="5px" id="gc68">
+                            <af:inputText value="#{bindings.RollNo.inputValue}" 
+                                      required="#{bindings.RollNo.hints.mandatory}"
+                                      columns="#{bindings.RollNo.hints.displayWidth}"
+                                      maximumLength="#{bindings.RollNo.hints.precision}"
+                                      shortDesc="#{bindings.RollNo.hints.tooltip}" id="it23">
+                            <f:validator binding="#{bindings.RollNo.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.RollNo.format}"/>
+                        </af:inputText>
+                            </af:gridCell>
+                        </af:gridRow>
+                    </af:panelGridLayout>
+                    <af:panelFormLayout id="pfl4" maxColumns="2" rows="2" fieldWidth="50" labelWidth="40"
+                                        labelAlignment="start">
+                        
+                    </af:panelFormLayout>
+                </af:panelBox>
+                <af:panelBox text="Passport Photo" id="pb5">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout id="pt_pgl6" layout="vertical">
+                        <af:panelGridLayout id="pgl5">
+                            <af:gridRow marginTop="5px" height="60%" id="gr1">
+                                <af:gridCell marginStart="5px" width="50%" id="gc1">
+                                    <af:panelGroupLayout id="pgl6" layout="vertical">
+                                        <af:inputFile shortDesc="Attach student's photo"
+                                                          id="if1" uploadType="auto"
+                                                      valueChangeListener="#{backingBeanScope.StudentSearchBackBean.fileUpload}"
+                                                          rows="1" simple="true" autoSubmit="true">
+                                        </af:inputFile>
+                                        <af:button text="Name" id="b3">
+                                            <af:fileDownloadActionListener contentType="text/plain" filename="name"
+                                                                           method="#{backingBeanScope.StudentSearchBackBean.FileDownloadActionListenerSty}"/>
+                                        </af:button>
+                                        <af:inputText value="#{bindings.SBirthPlace.inputValue}"
+                                                      label="#{bindings.SBirthPlace.hints.label}"
+                                                      required="#{bindings.SBirthPlace.hints.mandatory}"
+                                                      columns="#{bindings.SBirthPlace.hints.displayWidth}"
+                                                      maximumLength="#{bindings.SBirthPlace.hints.precision}"
+                                                      shortDesc="#{bindings.SBirthPlace.hints.tooltip}" id="it6">
+                                            <f:validator binding="#{bindings.SBirthPlace.validator}"/>
+                                        </af:inputText>
+                                        <af:inputText value="#{bindings.SNationality.inputValue}"
+                                                      label="#{bindings.SNationality.hints.label}"
+                                                      required="#{bindings.SNationality.hints.mandatory}"
+                                                      columns="#{bindings.SNationality.hints.displayWidth}"
+                                                      maximumLength="#{bindings.SNationality.hints.precision}"
+                                                      shortDesc="#{bindings.SNationality.hints.tooltip}" id="it7">
+                                            <f:validator binding="#{bindings.SNationality.validator}"/>
+                                        </af:inputText>
+                                    </af:panelGroupLayout>
+                                </af:gridCell>
+                                <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc2">
+                                    <af:panelGroupLayout id="pgl7" layout="vertical">
+                                        <af:inlineFrame id="if2" partialTriggers="if1" source="/viewimageservlet?"/>
+                                        <af:image source="/viewimageservlet?" id="i1" partialTriggers="if1"
+                                                  rendered="false"/>
+                                    </af:panelGroupLayout>
+                                </af:gridCell>
+                            </af:gridRow>
+                            <af:gridRow marginTop="5px" height="40%" marginBottom="5px" id="gr2">
+                                <af:gridCell marginStart="5px" width="50%" id="gc3"></af:gridCell>
+                                <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc4"/>
+                            </af:gridRow>
+                        </af:panelGridLayout>
+                    </af:panelGroupLayout>
+                </af:panelBox>
+                <af:separator id="s1"/>
+            </af:panelGroupLayout>
+        </af:panelHeader>
+    </af:panelGroupLayout>
+</ui:composition>

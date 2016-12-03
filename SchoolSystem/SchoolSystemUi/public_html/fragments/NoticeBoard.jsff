@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelHeader text="School Notice Board" id="ph1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar">
+        <af:menuBar id="mb1">
+          <af:menu text="Export" id="m1">
+            <af:commandMenuItem text="pdf" id="cmi1"/>
+            <af:commandMenuItem text="xls" id="cmi2"/>
+          </af:menu>
+        </af:menuBar>
+      </f:facet>
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+        <af:button id="b2" icon="/images/search.png">
+            <af:showPopupBehavior popupId="p1"/>
+          </af:button>
+          <af:button  text="Setting"
+                    id="b1" action="addedit" icon="/images/s_Add.png"/>
+          
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+        <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="immediate">
+          <af:panelWindow id="pw1" modal="true">
+            <af:panelGroupLayout layout="vertical" id="pgl4">              
+                <af:query id="qryId1" headerText="Search" disclosed="true"
+                          value="#{bindings.SNoticeBoardSearchCriteriaQuery.queryDescriptor}"
+                          model="#{bindings.SNoticeBoardSearchCriteriaQuery.queryModel}"
+                          queryListener="#{bindings.SNoticeBoardSearchCriteriaQuery.processQuery}"
+                          queryOperationListener="#{bindings.SNoticeBoardSearchCriteriaQuery.processQueryOperation}"
+                          resultComponentId="::lv1" saveQueryMode="hidden" modeChangeVisible="false"/>              
+            </af:panelGroupLayout>
+          </af:panelWindow>
+        </af:popup>
+        <af:listView value="#{bindings.SNoticeBoardVO1.collectionModel}" var="item"
+                     emptyText="#{bindings.SNoticeBoardVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                     fetchSize="#{bindings.SNoticeBoardVO1.rangeSize}" id="lv1" partialTriggers="::b1 ::qryId1">
+          <af:listItem id="li1">
+            <af:panelGroupLayout layout="horizontal" id="pgl3">
+              <f:facet name="separator">
+                <af:spacer width="10" id="s3"/>
+              </f:facet>
+              <af:panelFormLayout id="pfl1">
+          <af:spacer width="3" height="3" id="s2"/>
+                <af:inputDate value="#{item.bindings.NPublishDate.inputValue}" label="#{bindings.NPublishDate.hints.label}"
+                              required="#{bindings.NPublishDate.hints.mandatory}"
+                              columns="#{bindings.NPublishDate.hints.displayWidth}"
+                              shortDesc="#{bindings.NPublishDate.hints.tooltip}" id="id1" readOnly="true">
+                  <f:validator binding="#{item.bindings.NPublishDate.validator}"/>
+                  <af:convertDateTime pattern="#{item.bindings.NPublishDate.format}"/>
+                </af:inputDate>
+                <af:inputText value="#{item.bindings.NSubject.inputValue}" label="#{bindings.NSubject.hints.label}"
+                        required="#{bindings.NSubject.hints.mandatory}"
+                        columns="150"
+                        maximumLength="#{bindings.NSubject.hints.precision}"
+                        shortDesc="#{bindings.NSubject.hints.tooltip}" id="it1" rows="2" readOnly="true">
+            <f:validator binding="#{item.bindings.NSubject.validator}"/>
+          </af:inputText>
+          <af:spacer width="10" height="10" id="s1"/>          
+          <af:inputText value="#{item.bindings.NContent.inputValue}" 
+                        required="#{bindings.NContent.hints.mandatory}"
+                        columns="200"
+                        maximumLength="#{bindings.NContent.hints.precision}"
+                        shortDesc="#{bindings.NContent.hints.tooltip}" id="it2" rows="25" readOnly="true">
+            <f:validator binding="#{item.bindings.NContent.validator}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+            </af:panelGroupLayout>
+          </af:listItem>
+        </af:listView>
+        
+      </af:panelGroupLayout>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</ui:composition>

@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="schoolsystemuiBundle" value="#{adfBundle['schoolsystemui.fragments.StudentSearchPageBundle']}"/>
+    <af:panelGroupLayout id="pgl1" layout="vertical">
+    
+        <af:panelHeader text="#{schoolsystemuiBundle.STUDENT_SEARCH}" id="ph1" type="flow">
+            <f:facet name="context"/>
+            <f:facet name="menuBar"/>
+            <f:facet name="toolbar">
+                <af:toolbar id="t1">
+                   
+                </af:toolbar>
+            </f:facet>
+            <f:facet name="legend"/>
+            <f:facet name="info"/>
+            <af:panelGroupLayout id="pgl2" layout="vertical">
+                <af:panelGroupLayout layout="vertical" id="pgl3">
+                    <af:query id="qryId1" headerText="Search" disclosed="true"
+                              value="#{bindings.StudentSearchCriteriaQuery.queryDescriptor}"
+                              model="#{bindings.StudentSearchCriteriaQuery.queryModel}"
+                              queryListener="#{backingBeanScope.StudentSearchBackBean.OnQuery}"
+                              queryOperationListener="#{bindings.StudentSearchCriteriaQuery.processQueryOperation}"
+                              resultComponentId="::lv1" rows="2" maxColumns="3" fieldWidth="30" labelWidth="30"
+                              displayMode="compact" modeChangeVisible="false" saveQueryMode="hidden"
+                              labelAlignment="top"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl9" halign="center" layout="vertical">
+                    <af:separator id="s1"/>
+                    <af:spacer width="10" height="10" id="s2"/>
+                    <af:panelGroupLayout id="pgl10" halign="center" layout="horizontal">
+                     <af:button id="b1" disabled="#{!bindings.CreateInsert.enabled}"
+                               actionListener="#{bindings.CreateInsert.execute}" action="addedit"
+                                text="Registration"/>
+                        <af:spacer width="10" height="10" id="s3"/>
+                        
+                        <af:menuBar id="mb1">
+                            <af:menu text="Export" id="m1">
+                                <af:commandMenuItem text="pdf" id="cmi1"
+                                                    actionListener="#{backingBeanScope.StudentSearchBackBean.exportActionListener}">
+                                    <af:fileDownloadActionListener method="#{backingBeanScope.StudentSearchBackBean.generateReport}"/>
+                                    <af:clientListener type="action" method="newWindow"/>
+                                </af:commandMenuItem>
+                                <af:commandMenuItem text="xls" id="cmi2"/>
+                            </af:menu>
+                        </af:menuBar>
+                </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                    <af:listView value="#{bindings.SStudentVO1.collectionModel}" var="item"
+                             emptyText="#{bindings.SStudentVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                             fetchSize="#{bindings.SStudentVO1.rangeSize}" id="lv1">
+                    <af:listItem id="li1">
+                        <af:panelGridLayout id="pgl4">                       
+                            <af:gridRow marginTop="2px" height="95%" marginBottom="2px" id="gr1">
+                                <af:gridCell marginStart="2px" width="5%" id="gc1">
+                                    <af:panelGroupLayout id="pgl5" layout="vertical">
+                                         
+                                        </af:panelGroupLayout>
+                                </af:gridCell>
+                                <af:gridCell marginStart="1px" width="95%" marginEnd="2px" id="gc2">
+                                        <af:panelBox text="#{item.bindings.SId.inputValue} &nbsp; &nbsp;&nbsp;     #{item.bindings.SFirstName.inputValue }&nbsp; #{item.bindings.SLastName.inputValue} " id="pb1"
+                                                     disclosed="false" type="flow">
+                                            <f:facet name="toolbar">
+                                                <af:toolbar id="t2">
+                                                <af:button actionListener="#{backingBeanScope.StudentSearchBackBean.editActionListener}"
+                                                       text="Edit"
+                                                        id="b2"
+                                                       action="addedit" icon="/images/sEdit.png" styleClass="Edit"/>
+                                                </af:toolbar>
+                                            </f:facet>                                        
+                                        <af:panelGroupLayout id="pgl6" layout="vertical">
+                                                <af:panelGridLayout id="pgl7">
+                                                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                                                                id="gr2">
+                                                        <af:gridCell marginStart="5px" width="34%" id="gc3">
+                                                    
+                                              
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="33%" id="gc4">
+                                                          
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="33%" marginEnd="5px"
+                                                                     id="gc5">
+                                                         
+                                                        </af:gridCell>
+                                                    </af:gridRow>
+                                                </af:panelGridLayout>
+                                                <af:panelGridLayout id="pgl8">
+                                                    <af:gridRow marginTop="5px" height="auto" id="gr3">
+                                                        <af:gridCell marginStart="5px" width="10%" id="gc6">
+                                                        <af:panelLabelAndMessage label="#{bindings.SStudentVO11.hints.SId.label}" id="plam1"/>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="20%" id="gc7">
+                                                         <af:inputText value="#{item.bindings.SId.inputValue}"                                                          
+                                                          required="#{bindings.SStudentVO11.hints.SId.mandatory}"
+                                                          columns="#{bindings.SStudentVO11.hints.SId.displayWidth}"
+                                                          maximumLength="#{bindings.SStudentVO11.hints.SId.precision}"
+                                                          shortDesc="#{bindings.SStudentVO11.hints.SId.tooltip}"
+                                                          id="it1" readOnly="true">
+                                                <f:validator binding="#{item.bindings.SId.validator}"/>
+                                            </af:inputText>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="10%" id="gc8">
+                                                        <af:panelLabelAndMessage label="#{bindings.SStudentVO11.hints.SGender.label}" id="plam5"/>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="20%" id="gc9">
+                                                        <af:inputText value="#{item.bindings.SGender.inputValue}"                                                                      
+                                                                      required="#{bindings.SStudentVO11.hints.SGender.mandatory}"
+                                                                      columns="#{bindings.SStudentVO11.hints.SGender.displayWidth}"
+                                                                      maximumLength="#{bindings.SStudentVO11.hints.SGender.precision}"
+                                                                      shortDesc="#{bindings.SStudentVO11.hints.SGender.tooltip}"
+                                                                      id="it5" readOnly="true">
+                                                            <f:validator binding="#{item.bindings.SGender.validator}"/>
+                                                        </af:inputText>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="10%" id="gc10">
+                                                        <af:panelLabelAndMessage label="#{bindings.SStudentVO11.hints.SectionCode.label}" id="plam9"/>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="30%" marginEnd="5px"
+                                                                     id="gc11">
+                                                                     
+                                                        <af:selectOneChoice value="#{item.bindings.SectionCode.inputValue}"                                                                            
+                                                                            required="#{bindings.SStudentVO11.hints.SectionCode.mandatory}"
+                                                                            shortDesc="#{bindings.SStudentVO11.hints.SectionCode.tooltip}"
+                                                                            id="soc2" readOnly="true">
+                                                            <f:selectItems value="#{item.bindings.SectionCode.items}"
+                                                                           id="si2"/>
+                                                            <f:validator binding="#{item.bindings.SectionCode.validator}"/>
+                                                        </af:selectOneChoice>
+                                                                    </af:gridCell>
+                                                    </af:gridRow>
+                                                    <af:gridRow marginTop="5px" height="auto" id="gr4">
+                                                        <af:gridCell marginStart="5px" width="10%" id="gc12">
+                                                        <af:panelLabelAndMessage label="#{bindings.SStudentVO11.hints.SFirstName.label}" id="plam2"/>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="20%" id="gc13">
+                                                        
+                                                        <af:inputText value="#{item.bindings.SFirstName.inputValue}"                                                                      
+                                                                      required="#{bindings.SStudentVO11.hints.SFirstName.mandatory}"
+                                                                      columns="#{bindings.SStudentVO11.hints.SFirstName.displayWidth}"
+                                                                      maximumLength="#{bindings.SStudentVO11.hints.SFirstName.precision}"
+                                                                      shortDesc="#{bindings.SStudentVO11.hints.SFirstName.tooltip}"
+                                                                      id="it2" readOnly="true">
+                                                            <f:validator binding="#{item.bindings.SFirstName.validator}"/>
+                                                        </af:inputText>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="10%" id="gc14">
+                                                        <af:panelLabelAndMessage label="#{bindings.SStudentVO11.hints.SDateOfBitrh.label}" id="plam6"/>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="20%" id="gc15">
+                                                        
+                                                        <af:inputDate value="#{item.bindings.SDateOfBitrh.inputValue}"                                                                      
+                                                                      required="#{bindings.SStudentVO11.hints.SDateOfBitrh.mandatory}"
+                                                                      columns="#{bindings.SStudentVO11.hints.SDateOfBitrh.displayWidth}"
+                                                                      shortDesc="#{bindings.SStudentVO11.hints.SDateOfBitrh.tooltip}"
+                                                                      id="id1" readOnly="true">
+                                                            <f:validator binding="#{item.bindings.SDateOfBitrh.validator}"/>
+                                                            <af:convertDateTime pattern="#{bindings.SStudentVO11.hints.SDateOfBitrh.format}"/>
+                                                        </af:inputDate>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="10%" id="gc16">
+                                                        <af:panelLabelAndMessage label="#{bindings.SStudentVO11.hints.SessionCode.label}" id="plam10"/>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="30%" marginEnd="5px"
+                                                                     id="gc17">
+                                                            
+                                                        <af:selectOneChoice value="#{item.bindings.SessionCode.inputValue}"                                                                            
+                                                                            required="#{bindings.SStudentVO11.hints.SessionCode.mandatory}"
+                                                                            shortDesc="#{bindings.SStudentVO11.hints.SessionCode.tooltip}"
+                                                                            id="soc3" readOnly="true">
+                                                            <f:selectItems value="#{item.bindings.SessionCode.items}"
+                                                                           id="si3"/>
+                                                            <f:validator binding="#{item.bindings.SessionCode.validator}"/>
+                                                        </af:selectOneChoice>
+                                                            </af:gridCell>
+                                                    </af:gridRow>
+                                                    <af:gridRow marginTop="5px" height="auto" id="gr5">
+                                                        <af:gridCell marginStart="5px" width="10%" id="gc18">
+                                                        <af:panelLabelAndMessage label="#{bindings.SStudentVO11.hints.SLastName.label}" id="plam3"/>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="20%" id="gc19">
+                                                        
+                                                        <af:inputText value="#{item.bindings.SLastName.inputValue}"                                                                      
+                                                                      required="#{bindings.SStudentVO11.hints.SLastName.mandatory}"
+                                                                      columns="#{bindings.SStudentVO11.hints.SLastName.displayWidth}"
+                                                                      maximumLength="#{bindings.SStudentVO11.hints.SLastName.precision}"
+                                                                      shortDesc="#{bindings.SStudentVO11.hints.SLastName.tooltip}"
+                                                                      id="it3" readOnly="true">
+                                                            <f:validator binding="#{item.bindings.SLastName.validator}"/>
+                                                        </af:inputText>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="10%" id="gc20">
+                                                        <af:panelLabelAndMessage label="#{bindings.SStudentVO11.hints.SBloodGroup.label}" id="plam7"/>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="20%" id="gc21">
+                                                        
+                                                        <af:inputText value="#{item.bindings.SBloodGroup.inputValue}"                                                                      
+                                                                      required="#{bindings.SStudentVO11.hints.SBloodGroup.mandatory}"
+                                                                      columns="#{bindings.SStudentVO11.hints.SBloodGroup.displayWidth}"
+                                                                      maximumLength="#{bindings.SStudentVO11.hints.SBloodGroup.precision}"
+                                                                      shortDesc="#{bindings.SStudentVO11.hints.SBloodGroup.tooltip}"
+                                                                      id="it12" readOnly="true">
+                                                            <f:validator binding="#{item.bindings.SBloodGroup.validator}"/>
+                                                        </af:inputText>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="10%" id="gc22">
+                                                        <af:panelLabelAndMessage label="#{bindings.SStudentVO11.hints.ClassCode.label}" id="plam8"/>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="30%" marginEnd="5px"
+                                                                     id="gc23">
+                                                           <af:selectOneChoice value="#{item.bindings.ClassCode.inputValue}"                                                                            
+                                                                            required="#{bindings.SStudentVO11.hints.ClassCode.mandatory}"
+                                                                            shortDesc="#{bindings.SStudentVO11.hints.ClassCode.tooltip}"
+                                                                            id="soc1" readOnly="true">
+                                                            <f:selectItems value="#{item.bindings.ClassCode.items}"
+                                                                           id="si1"/>
+                                                            <f:validator binding="#{item.bindings.ClassCode.validator}"/>
+                                                        </af:selectOneChoice>
+                                                        </af:gridCell>
+                                                    </af:gridRow>
+                                                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px"
+                                                                id="gr6">
+                                                        <af:gridCell marginStart="5px" width="10%" id="gc24">
+                                                         <af:panelLabelAndMessage label="#{bindings.SStudentVO11.hints.SMiddleName.label}" id="plam4"/>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="20%" id="gc25">
+                                                        
+                                                        <af:inputText value="#{item.bindings.SMiddleName.inputValue}"                                                                      
+                                                                      required="#{bindings.SStudentVO11.hints.SMiddleName.mandatory}"
+                                                                      columns="#{bindings.SStudentVO11.hints.SMiddleName.displayWidth}"
+                                                                      maximumLength="#{bindings.SStudentVO11.hints.SMiddleName.precision}"
+                                                                      shortDesc="#{bindings.SStudentVO11.hints.SMiddleName.tooltip}"
+                                                                      id="it4" readOnly="true">
+                                                            <f:validator binding="#{item.bindings.SMiddleName.validator}"/>
+                                                        </af:inputText>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="10%" id="gc26">
+                                                        <af:panelLabelAndMessage label="#{bindings.SStudentVO11.hints.RollNo.label}" id="plam11"/>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="20%" id="gc27">
+                                                         <af:inputText value="#{item.bindings.RollNo.inputValue}"                                                                      
+                                                                      required="#{bindings.SStudentVO11.hints.RollNo.mandatory}"
+                                                                      columns="#{bindings.SStudentVO11.hints.RollNo.displayWidth}"
+                                                                      maximumLength="#{bindings.SStudentVO11.hints.RollNo.precision}"
+                                                                      shortDesc="#{bindings.SStudentVO11.hints.RollNo.tooltip}"
+                                                                      id="it26" readOnly="true">
+                                                            <f:validator binding="#{item.bindings.RollNo.validator}"/>
+                                                            <af:convertNumber groupingUsed="false"
+                                                                              pattern="#{bindings.SStudentVO11.hints.RollNo.format}"/>
+                                                        </af:inputText>
+                                                        </af:gridCell>
+                                                        <af:gridCell marginStart="5px" width="10%" id="gc28"/>
+                                                        <af:gridCell marginStart="5px" width="30%" marginEnd="5px"
+                                                                     id="gc29"/>
+                                                    </af:gridRow>
+                                                </af:panelGridLayout>
+                                            </af:panelGroupLayout>
+                                     </af:panelBox>
+                                </af:gridCell>
+                            </af:gridRow>
+                        </af:panelGridLayout>
+                    </af:listItem>
+                </af:listView>
+                
+                
+            </af:panelGroupLayout>
+        </af:panelHeader>
+    </af:panelGroupLayout>
+</ui:composition>

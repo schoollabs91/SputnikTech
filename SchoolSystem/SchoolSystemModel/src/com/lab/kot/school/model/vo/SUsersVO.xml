@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SUsersVO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <ViewAccessor
+    Name="UserRolesVA"
+    ViewObjectName="com.lab.kot.school.model.vo.UserRolesVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Role"
+    ListVOName="UserRolesVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Role"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ROLE_NAME"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ROLE_NAME"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="SUsersEO"
+    Entity="com.lab.kot.school.model.eo.SUsersEO"/>
+  <ViewAttribute
+    Name="UserId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UserId"
+    EntityUsage="SUsersEO"
+    AliasName="USER_ID"/>
+  <ViewAttribute
+    Name="UserEmail"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UserEmail"
+    EntityUsage="SUsersEO"
+    AliasName="USER_EMAIL"/>
+  <ViewAttribute
+    Name="Password"
+    PrecisionRule="true"
+    EntityAttrName="Password"
+    EntityUsage="SUsersEO"
+    AliasName="PASSWORD"/>
+  <ViewAttribute
+    Name="Role"
+    PrecisionRule="true"
+    EntityAttrName="Role"
+    EntityUsage="SUsersEO"
+    AliasName="ROLE"
+    LOVName="LOV_Role">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NickName"
+    PrecisionRule="true"
+    EntityAttrName="NickName"
+    EntityUsage="SUsersEO"
+    AliasName="NICK_NAME"/>
+  <ViewCriteria
+    Name="SUsersLookup"
+    ViewObjectName="com.lab.kot.school.model.vo.SUsersVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SUsersVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="UserId"
+        ViewAttribute="UserId"
+        Operator="="
+        Conjunction="AND"
+        Value=""
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Role"
+        ViewAttribute="Role"
+        Operator="="
+        Conjunction="AND"
+        Value=""
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+</ViewObject>

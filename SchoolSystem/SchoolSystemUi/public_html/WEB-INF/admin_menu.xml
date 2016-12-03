@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+<itemNode id="itemNode_NoticeBoardPage" label="Notice Board" action="NoticeBoardPage"
+            focusViewId="/NoticeBoardPage"/>
+  <itemNode id="itemNode_ListOfValuesPage" label="Configuration" action="ListOfValuesPage"
+            focusViewId="/ListOfValuesPage"/>
+  
+</menu>
